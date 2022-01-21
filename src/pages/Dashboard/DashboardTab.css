@@ -1,0 +1,33 @@
+.dashboardTab{
+    /* color: white; */
+    /* background: red; */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 3.5em 0;
+    justify-content: space-around;
+    /* text-align: center; */
+    padding-left: 1.5em;
+}
+
+
+.dashboardTab > div > small{
+    font-size: 14px;
+    color: gray;
+    font-weight: bold;
+}
+
+
+
+.dashboardTab__link,
+.dashboardTab__logout{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.dashboardTab__link:hover{
+    background: red;
+    /* width: 100%; */
+}

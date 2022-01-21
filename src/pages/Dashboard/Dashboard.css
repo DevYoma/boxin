@@ -1,0 +1,13 @@
+.dashboard{
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard__tab{
+    flex: 0.15;
+    background: #091E42;
+}
+
+.dashboard__main{
+    flex: 0.85;
+}
