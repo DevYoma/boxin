@@ -2,12 +2,13 @@ import React from 'react';
 import './DashboardTab.css'
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../../context/StateProvider';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 const DashboardTab = () => {
-    let navigate = useNavigate()
+    // let navigate = useNavigate()
     const [{user}, dispatch] = useStateValue()
+    const history = useHistory()
 
 
     const handleLogout = () => {
@@ -18,7 +19,8 @@ const DashboardTab = () => {
                     user: null
                 }
             })
-            navigate('/signin')
+            history.push('/signin')
+            // navigate('/signin')
         }
         
     }
@@ -97,25 +99,27 @@ const DashboardTab = () => {
 
     const mainTabsMapping = (
         mainTabs.map(mainItem => <p key={mainItem.id}>
-            <Link className='dashboardTab__link'  to={`${mainItem.link}`}>{mainItem.name}</Link>
+            <Link className='dashboardTab__link'  to={`/app${mainItem.link}`}>{mainItem.name}</Link>
         </p>)
     )
 
     const shippingTabsMapping = (
         shippingTabs.map(shippingItem => <p key={shippingItem.id}>
-            <Link className='dashboardTab__link'  to={`${shippingItem.link}`}>{shippingItem.name}</Link>
+            <Link className='dashboardTab__link' to={`/app${shippingItem.link}`}>{shippingItem.name}</Link>
         </p>)
     )
 
+    // to={`${shippingItem.link}`
+
     const paymentTabsMapping = (
         paymentTabs.map(paymentItem => <p key={paymentItem.id}>
-            <Link className='dashboardTab__link'  to={`${paymentItem.link}`}>{paymentItem.name}</Link>
+            <Link className='dashboardTab__link'  to={`/app${paymentItem.link}`}>{paymentItem.name}</Link>
         </p>)
     )
 
     const eCommerceMapping = (
         eCommerce.map(eCommerceItem => <p key={eCommerceItem.id}>
-            <Link className='dashboardTab__link'  to={`${eCommerceItem.id}`}>{eCommerceItem.name}</Link>
+            <Link className='dashboardTab__link'  to={`/app${eCommerceItem.link}`}>{eCommerceItem.name}</Link>
         </p>)
     )
     

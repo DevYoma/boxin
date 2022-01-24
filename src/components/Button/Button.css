@@ -1,0 +1,16 @@
+.component__button{
+    padding: 10px 20px;
+    background: #EBEFF3;
+    color: black;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
+.component__button:hover{
+    color: red;
+    border: 1px solid red;
+    transform: scale(1.1);
+}
+
