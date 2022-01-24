@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 // import { useStateValue } from '../context/StateProvider'
 import { useStateValue } from '../../context/StateProvider'
 // import './SignUp.css';
@@ -35,7 +35,7 @@ const theme = createTheme();
 export default function SignIn() {
   const [{}, dispatch] = useStateValue()
 
-  let navigate = useNavigate()
+  let history = useHistory()
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +45,8 @@ export default function SignIn() {
         user: true 
       }
     })
-    navigate('/app')
+    // navigate('/app')
+    history.push('/app')
   }
 
   return (

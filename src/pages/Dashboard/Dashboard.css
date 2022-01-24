@@ -1,11 +1,16 @@
 .dashboard{
     display: flex;
     min-height: 100vh;
+    position: relative;
 }
 
 .dashboard__tab{
     flex: 0.15;
     background: #091E42;
+    /* display: none; */
+    /* position: absolute; */
+    /* top: 0; */
+    /* left: 0 ; */
 }
 
 .dashboard__main{

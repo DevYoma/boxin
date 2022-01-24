@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './SignUp.css';
 
 function Copyright(props) {
@@ -31,12 +31,12 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  let navigate = useNavigate();
+  const history = useHistory();
 
   const handleClick = (e) => {
     e.preventDefault()
     alert("working")
-    navigate('/signin')
+    history.push('/signin')
   }
 
   return (
