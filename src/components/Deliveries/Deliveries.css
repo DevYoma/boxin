@@ -1,6 +1,6 @@
 .deliveries{
     height: 100vh;
-    background: red;
+    /* background: red; */
     overflow-y: scroll;
     padding: 40px 40px 0px;
 }
