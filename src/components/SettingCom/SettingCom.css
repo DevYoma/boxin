@@ -1,6 +1,7 @@
 .settingCom{
     /* background: hotpink; */
     min-height: 100vh;
+    overflow: scroll;
 }
 
 .settingCom__head{
@@ -62,4 +63,21 @@ hr{
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+}
+
+.settingCom__locationDetails > * {
+    margin-bottom: 30px;
+}
+
+.settingCom__locationDetails > hr {
+    margin-bottom: 30px;
+}
+
+.settingCom__saveChanges{
+    background: #091E42;
+    color: white;
+    padding: 1em 1.25em;
+    border: none;
+    font-weight: 900;
+    font-size: 1,25rem;
 }

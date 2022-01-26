@@ -1,0 +1,50 @@
+.deliveries{
+    height: 100vh;
+    /* background: red; */
+    overflow-y: scroll;
+    padding: 40px 40px 0px;
+}
+
+.deliveries__heading > h1{
+
+}
+
+.deliveries__subHeading{
+    display: flex;
+    /* background: red; */
+    margin-bottom: 30px;
+}
+
+.deliveries__text{
+    margin-right: auto;
+}
+
+.deliveries__text > p{
+    color: #9297B4;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.deliveries__requestButton{
+    background: #091E42;
+    color: white;
+    border: none;
+    padding: 1em;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.delivery__main{
+    border: 1px solid red;
+}
+
+
+.delivery__buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.row{
+    display: flex;
+}

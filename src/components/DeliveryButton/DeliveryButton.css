@@ -1,0 +1,13 @@
+.delivery__button{
+    background: white;
+    padding: 10px;
+    border: 1px solid rgba(247, 240, 240, 0.9999);
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delivery__button:focus{
+    background: red;
+    color: white;
+}

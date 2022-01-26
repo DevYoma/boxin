@@ -1,11 +1,42 @@
 import React from 'react';
 import './SettingCom.css'
 import { Link } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
 // import TextField from '@mui/material/TextField';
 import Button from '../Button/Button'
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem'
 
 const SettingCom = () => {
+
+    const currencies = [
+        {
+          value: 'USD',
+          label: '$',
+        },
+        {
+          value: 'EUR',
+          label: '€',
+        },
+        {
+          value: 'BTC',
+          label: '฿',
+        },
+        {
+          value: 'JPY',
+          label: '¥',
+        },
+      ];
+
+      const [currency, setCurrency] = React.useState('EUR');
+
+        const handleChange = (e) => {
+            setCurrency(e.target.value);
+        };
+
+        const submit = (e) => {
+            e.preventDefault()
+            alert("working")
+        }
 
     return ( 
         <div className="settingCom">
@@ -72,22 +103,62 @@ const SettingCom = () => {
                 <hr />
 
                 <div className="settingCom__location">
-                    <p>WHERE IS YOUR PRIMARY BUSINESS LOCATION</p>
                     <div className="settingCom__locationDetails">
                         <div>
+                            <p>WHERE IS YOUR PRIMARY BUSINESS LOCATION?</p>
+                            <TextField
+                                id="outlined-select-currency"
+                                select
+                                label="Select"
+                                value={currency}
+                                onChange={handleChange}
+                                helperText="Please select your currency"
+                                className='width'
+                                >
+                                {currencies.map((option) => (
+                                    <MenuItem key={option.value} value={option.value}>
+                                    {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        </div>
+                        <div>
+                            <p>BUSINESS ADDRESS</p>
                             <TextField 
                                 id="outlined-basic" 
-                                label="Business Name" 
+                                label="Business Address" 
                                 variant="outlined"
                                 className="width"
                             />
                         </div>
+
+                        <div className='row'>
+                            <TextField 
+                                id="outlined-basic" 
+                                label="City" 
+                                variant="outlined"
+                            />
+
+                             <TextField 
+                                id="outlined-basic" 
+                                label="State" 
+                                variant="outlined"
+                            />
+                        </div>
+
+                        <hr />
                     </div>
-                </div>
+                </div>  
+
+                <button 
+                    onClick={submit}
+                    className="settingCom__saveChanges"
+                >
+                    Save changes
+                </button>
 
             </div>
 
-           
         </div>
      );
 }
