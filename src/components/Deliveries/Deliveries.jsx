@@ -34,7 +34,7 @@ const Deliveries = () => {
     return ( 
         <div className="deliveries">
             <div className="deliveries__heading">
-                <h1>Deliveries</h1>
+                <h1>Yoma Deliveries</h1>
 
                 <div className="deliveries__subHeading">
                     <div className='deliveries__text'>
