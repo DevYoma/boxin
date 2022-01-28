@@ -16,7 +16,7 @@ import Product from '../../components/Products/Product'
 import Orders from '../../components/Orders/Orders'
 import Customers from '../../components/Customers/Customers';
 import Transactions from '../../components/Transactions/Transactions';
-
+import UserDashboard from '../../components/UserDashboard/UserDashboard'
 
 const Dashboard = () => {
 
@@ -55,7 +55,8 @@ const Dashboard = () => {
                 <div className="dashboard__main">
                     <Switch>
                         <Route path='/app/dashboard'>
-                            <h1>Dashboard</h1>
+                            {/* <h1>Dashboard</h1> */}
+                            <UserDashboard />
                         </Route>
                         <Route path="/app/view-my-store">
                             <Store />
