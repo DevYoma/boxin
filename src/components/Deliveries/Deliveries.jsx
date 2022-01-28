@@ -3,6 +3,10 @@ import './Deliveries.css';
 import DeliveryButton from '../DeliveryButton/DeliveryButton';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem'
+import ReplayIcon from '@mui/icons-material/Replay';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 const Deliveries = () => {
 
@@ -34,7 +38,7 @@ const Deliveries = () => {
     return ( 
         <div className="deliveries">
             <div className="deliveries__heading">
-                <h1>Yoma Deliveries</h1>
+                <h1>Deliveries</h1>
 
                 <div className="deliveries__subHeading">
                     <div className='deliveries__text'>
@@ -48,8 +52,8 @@ const Deliveries = () => {
                 </div>
             </div>
 
-            <div className="delivery__main">
-                <div className="delivery__buttons">
+            <div className="deliveries__main">
+                <div className="deliveries__buttons">
                     <DeliveryButton name="All"/>
                     <DeliveryButton name="Pending"/>
                     <DeliveryButton name="ON hold"/>
@@ -57,16 +61,20 @@ const Deliveries = () => {
                     <DeliveryButton name="OnGoing"/>
                     <DeliveryButton name="Completed"/>
                     <DeliveryButton name="Cancelled"/>
+
+                    
+
+
+                    <p id='special'>0 RESULTS PAGE 1 OF 0</p>
                 </div>
 
-                <div className="delivery__conditions row">
+                <div className="deliveries__conditions row">
                     <TextField
                         id="outlined-select-currency"
                         select
                         label="Select"
                         value={currency}
                         onChange={handleChange}
-                        helperText="Please select your currency"
                         className='width'
                         >
                         {currencies.map((option) => (
@@ -83,7 +91,6 @@ const Deliveries = () => {
                         label="Select"
                         value={currency}
                         onChange={handleChange}
-                        helperText="Please select your currency"
                         className='width'
                         >
                         {currencies.map((option) => (
@@ -100,9 +107,32 @@ const Deliveries = () => {
                         className="width"
                     />
 
-                    <button id="filter">
-                        filter
-                    </button>
+                    <div className="deliveries__filterButtons">
+                        
+                        <button disabled id="filter"  className='deliveries__filterButton'>
+                            filter
+                        </button>
+
+                        <button className='deliveries__filterButton'>
+                            <ReplayIcon />
+                        </button>
+
+                        <button className='deliveries__filterButton'>
+                            <FileDownloadOutlinedIcon />
+                        </button>
+
+                        <button disabled className='deliveries__filterButton'>
+                            <ChevronLeftIcon />
+                        </button>
+
+                        <button className='deliveries__filterButton row'>
+                            20 per page <FileDownloadOutlinedIcon />
+                        </button>
+
+                        <button disabled className='deliveries__filterButton'>
+                            <ChevronRightIcon />
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
