@@ -1,0 +1,58 @@
+.userDashboard{
+    /* background: red; */
+    min-height: 100vh;
+    overflow-y: scroll;
+    padding: 3.5em 50px 75px
+}
+
+.userDashboard__head{
+    display: flex;
+    align-items: center;
+}
+
+.userDashboard__head > h1{
+    margin-right: auto;
+}
+
+.userDashboard__details{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* border: 1px solid black; */
+}
+
+.paper{
+    /* border: 1px solid red; */
+    /* width: 23%; */
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* flex-wrap: wrap; */
+    padding: 1em 1em 1em 1em;
+}
+
+.paper > small{
+    font-size: x-small;
+}
+
+.paper > .userDashboard__amount{
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+.userDashboard__amount > small{
+    font-size: x-small;
+    margin-left: 10px;
+}
+
+.userDashboard__daySorting{
+    /* border: 1px solid red; */
+    margin-top: 4em;
+    padding-left: 0;    
+}
+
+.userDashboard__dayButton{
+    padding: 3em;
+}
