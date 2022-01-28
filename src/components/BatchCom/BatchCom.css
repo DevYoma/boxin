@@ -1,45 +1,20 @@
-.deliveries{
+.batch{
     height: 100vh;
-    /* background: red; */
     overflow-y: scroll;
     padding: 40px 40px 0px;
 }
 
-.deliveries__heading > h1{
 
-}
-
-.deliveries__subHeading{
+.batch__subHeading{
     display: flex;
-    /* background: red; */
     margin-bottom: 30px;
 }
 
-.deliveries__text{
+.batch__text{
     margin-right: auto;
 }
 
-.deliveries__text > p{
-    color: #9297B4;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.deliveries__requestButton{
-    background: #091E42;
-    color: white;
-    border: none;
-    padding: 1em;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.deliveries__main{
-    /* border: 1px solid red; */
-}
-
-
-.deliveries__buttons{
+.batch__buttons{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -48,9 +23,21 @@
 
 p#special{
     margin-left: auto;
+}
+
+.batch__text > p{
     color: #9297B4;
     font-size: 14px;
     font-weight: 600;
+}
+
+.batch__requestButton{
+    background: #091E42;
+    color: white;
+    border: none;
+    padding: 1em;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .row{
@@ -58,20 +45,21 @@ p#special{
     align-items: center;
 }
 
-.deliveries__conditions{
+
+.batch__conditions{
     display: flex;
     align-items: center;
     justify-content: space-around;
     gap: 10px;
 }
 
-.deliveries__filterButtons{
+.batch__filterButtons{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.deliveries__filterButton{
+.batch__filterButton{
     /* background: red; */
     padding: 5px;
     border: none;

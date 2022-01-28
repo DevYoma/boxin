@@ -15,6 +15,7 @@ import Request from '../../components/Requests/Request'
 import Product from '../../components/Products/Product'
 import Orders from '../../components/Orders/Orders'
 import Customers from '../../components/Customers/Customers';
+import Transactions from '../../components/Transactions/Transactions';
 
 
 const Dashboard = () => {
@@ -95,6 +96,10 @@ const Dashboard = () => {
 
                         <Route path='/app/customers'>
                             <Customers />
+                        </Route>
+
+                        <Route path='/app/transactions'>
+                            <Transactions />
                         </Route>
 
                     </Switch>
