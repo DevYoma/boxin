@@ -24,7 +24,7 @@ export default function Nav() {
             <MenuIcon />
           </IconButton> */}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            SendBox
+            Boxin
           </Typography>
           <Button className="nav__button" color="inherit">Business Login</Button>
         </Toolbar>
