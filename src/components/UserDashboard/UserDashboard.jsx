@@ -48,13 +48,13 @@ const UserDashboard = () => {
 
             <div className="userDashboard__deliveries">
                 <div className="userDashboard__deliveriesMain">
-                    <h4>Deliveries</h4>
+                    <h4>DELIVERY SPEND</h4>
                     <p>Total deliveries within the specified period </p>
                 </div>
 
                 <div className="userDashboard__deliveriesSide">
                     <div className="top">
-                        <h4>Delivery Spend</h4>
+                        <h4>DELIVERY SPEND</h4>
                         <h2>&#8358;0.00</h2>
                         <small>This is how much you've spent on deliveries in the specified period</small>
                     </div>
@@ -62,7 +62,7 @@ const UserDashboard = () => {
                     <hr />
 
                     <div className="bottom">
-                        <h4>Delivery Spend</h4>
+                        <h4>E-COMMERCE SALES</h4>
                         <h2>&#8358;0.00</h2>
                         <small>This is how much you've spent on deliveries in the specified period</small>
                     </div>
@@ -71,9 +71,21 @@ const UserDashboard = () => {
             </div> 
 
             <div className="userDashboard__bottom">
-                <div className="userDashboard__orders box">asdfasdf</div>
-                <div className="userDashboard__revenue box">asdf</div>
-                <div className="userDashboard__customers box">sdf</div>
+                <div className="userDashboard__orders box">
+                    <h4>ORDERS</h4>
+                    <p>Total orders received within the specified period</p>
+                    <p className="amount">&#8358;0.00</p>
+                </div>
+                <div className="userDashboard__revenue box">
+                    <h4>REVENUE</h4>
+                    <p>Revenue generated within the specified period</p>
+                    <p className="amount">&#8358;0.00</p>
+                </div>
+                <div className="userDashboard__customers box">
+                    <h4>CUSTOMERS</h4>
+                    <p>Unique customers within the specified period</p>
+                    <p className="no_of_customers">0</p>
+                </div>
             </div>
         </div>
      );
