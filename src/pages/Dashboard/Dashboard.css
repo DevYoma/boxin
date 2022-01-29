@@ -8,11 +8,13 @@
     flex: 0.15;
     background: #091E42;
     /* display: none; */
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0 ; */
+    position: fixed;
+    top: 0;
+    left: 0 ;
 }
 
 .dashboard__main{
-    flex: 0.85;
+    /* flex: 0.85; */
+    flex: 1;
+    padding-left: 150px;
 }

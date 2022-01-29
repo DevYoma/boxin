@@ -3,7 +3,7 @@ import './DayButton.css';
 
 const DayButton = (props) => {
     return ( 
-        <button>
+        <button className="day__button">
             {props.name}
         </button>
      );
