@@ -33,6 +33,10 @@ function App() {
               <Dashboard />
             </Route>
 
+            {/* <Route path="app/view-my-store" exact>
+                <Store />
+            </Route> */}
+
             <Route path="/signin" exact>
               <SignIn />
             </Route>
