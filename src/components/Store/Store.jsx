@@ -44,7 +44,35 @@ const Store = () => {
                             <img src={Blender} alt="blender" />
                         </div>
                     </div>
+
+                    <div className="store__productItem">
+
+                        <div className="store__productItem__left">
+                            <h2 className="product__name">Pure XS</h2>
+                            <p className="product__description">
+                                Best Fragnance from Paco Rabanne
+                            </p>
+
+                            <p className="product__price">
+                            &#8358;40,000.00
+                            </p>
+                        </div>
+
+                        <div className="store__productItem__right">
+                            <img src={Blender} alt="blender" />
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div className="store__footer">
+                <h3>Bet Fragnance</h3>
+                <p>Lagos, Ikeja</p>
+                <p>Lagos, Nigeria</p>
+                <p>+234 555 5555 555</p>
+
+
+                <span>Powered by Boxin for Business</span>
             </div>
         </div>
      );
