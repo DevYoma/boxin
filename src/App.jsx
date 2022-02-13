@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn/SignIn'
 import Dashboard from './pages/Dashboard/Dashboard'
 import Nav from './components/Nav/Nav'
 import Store from './components/Store/Store'
+import VerifyComponent from './components/VerifyComponent/VerifyComponent'
 import NoMatch from './pages/NoMatch/NoMatch';
 import CssBaseline from '@mui/material/CssBaseline';
 import {
@@ -18,9 +19,11 @@ import {
 import { useStateValue } from './context/StateProvider';
 
 
+
 function App() {
   const [{user}, dispatch] = useStateValue()
   console.log(user)
+
 
   return (
 
@@ -39,6 +42,10 @@ function App() {
 
             <Route path="/signin" exact>
               <SignIn />
+            </Route>
+
+            <Route path="/verifytoken">
+              <VerifyComponent />
             </Route>
 
 
