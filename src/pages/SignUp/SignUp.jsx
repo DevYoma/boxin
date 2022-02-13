@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState, useEffect } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -14,30 +15,80 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link, useHistory } from 'react-router-dom';
 import './SignUp.css';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import axios from 'axios'
 
 const theme = createTheme();
 
 export default function SignUp() {
+  const [userDetails, setUserDetails] = useState({
+    // country: "", 
+    email: "",
+    lastname: "",
+    firstname: "",
+    phone: "",
+    password: "",
+  })
+
   const history = useHistory();
 
   const handleClick = (e) => {
     e.preventDefault()
-    alert("working")
-    history.push('/signin')
+    // history.push('/signin')
+   
+    // if(userDetails.password !== userDetails.verifypassword){
+    //   alert("The Passwords do not match")
+    //   return
+    // }
+    
+    console.log(userDetails);
+
+    const postToDB = async () => {
+      axios.post(`${baseURL}/auth/users/`, userDetails)
+      // .then(res => res.json())
+      .then(res => {console.log(res.data)})
+      .catch(err => {console.log(err)})
+
+    }
+
+    postToDB()
+
+    
+    // fetch('​/api​/v1​/auth​/users​/').
+
+    setUserDetails({
+      // country: "", 
+      email: "",
+      firstname: "",
+      lastname: "",
+      phone: "",
+      password: "",
+    })
+
+    history.push('/verifytoken')
   }
+
+  const handleChange = event => {
+    setUserDetails(prevUserDetails => {
+      return {
+        ...prevUserDetails,
+        [event.target.name]: event.target.value
+      }
+    })
+  }
+
+  const baseURL = "https://api.boxin.ng/api/v1"
+
+  useEffect(() => {
+    // const postToDB = async () => {
+    //   axios.post(`${baseURL}/auth/users/`, userDetails)
+    //   // .then(res => res.json())
+    //   .then(res => {console.log(res.data)})
+    //   .catch(err => {console.log(err)})
+
+    // }
+
+    // postToDB()
+  }, [userDetails])
 
   return (
     <ThemeProvider theme={theme}>
@@ -48,53 +99,81 @@ export default function SignUp() {
           <p>Already have an account? <Link to={'/signin'} style={{ color: "red", textDecoration: "none" }}>Sign In</Link></p>
 
           <form className="signUp__form">
-            <div>
+            {/* <div>
               <TextField
-                // fullWidth    
-                autoComplete="given-name"
                 name="country"
                 required
                 fullWidth
                 id="country"
                 label="Country"
-                autoFocus
+                value={userDetails.country}
+                onChange={handleChange}
               />
-            </div>
-            <div>
-              <TextField
-                autoComplete="given-name"
-                name="full name"
-                required
-                fullWidth
-                id="fullname"
-                label="First and Last Name"
-                autoFocus
-              />
+            </div> */}
+            <div className="row">
+              <div>
+                <TextField
+                  // autoComplete="given-name"
+                  name="firstname"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="Last Name"
+                  // autoFocus
+                  value={userDetails.firstname}
+                  onChange={handleChange}
+
+
+                />
+              </div>
+
+              <div>
+                <TextField
+                  // autoComplete="given-name"
+                  name="lastname"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="First Name"
+                  // autoFocus
+                  value={userDetails.lastname}
+                  onChange={handleChange}
+
+
+                />
+              </div>
             </div>
             <div className='row'>
 
               <div>
                 <TextField
-                  autoComplete="given-name"
+                  // autoComplete="given-name"
                   name="email"
                   required
                   fullWidth
                   id="email"
                   label="Email Address"
-                  autoFocus
+                  // autoFocus
+                  value={userDetails.email}
+                onChange={handleChange}
+
+
                 />
               </div>
 
               <div>
                 <TextField
                   className='col'
-                  autoComplete="given-name"
+                  // autoComplete="given-name"
                   name="phone"
                   required
                   fullWidth
                   id="phone"
                   label="Phone Number"
-                  autoFocus
+                  // autoFocus
+                  value={userDetails.phone}
+                onChange={handleChange}
+
                 />
 
               </div>
@@ -103,24 +182,32 @@ export default function SignUp() {
 
             <div className="row">
               <TextField
-                autoComplete="given-name"
+                // autoComplete="given-name"
                 name="password"
                 required
                 fullWidth
                 id="password"
                 label="Password"
-                autoFocus
+                // autoFocus
+                value={userDetails.password}
+                onChange={handleChange}
+                type="password"
+
               />
 
-              <TextField
-                autoComplete="given-name"
+              {/* <TextField
+                // autoComplete="given-name"
                 name="verifypassword"
                 required
                 fullWidth
                 id="verifypassword"
                 label="Verify Password"
-                autoFocus
-              />
+                value={userDetails.verifypassword}
+                // autoFocus
+                onChange={handleChange}
+                type="password"
+
+              /> */}
 
             </div>
 
