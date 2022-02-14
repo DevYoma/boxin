@@ -29,6 +29,7 @@ const ResendToken = () => {
         e.preventDefault()
         console.log(emailResend);
 
+        // the async here is so so weird
         const postResentEmailTokenToDB = async => {
             axios.post(`${baseURL}/auth/users/resend-token/`, emailResend)
             .then(res => {

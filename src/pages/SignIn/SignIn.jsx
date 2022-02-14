@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -16,24 +17,65 @@ import { Link, useHistory } from 'react-router-dom';
 // import { useStateValue } from '../context/StateProvider'
 import { useStateValue } from '../../context/StateProvider'
 // import './SignUp.css';
+import axios from 'axios';
 
 const theme = createTheme();
 
 export default function SignIn() {
   const [{}, dispatch] = useStateValue()
+  const [userData, setUserData] = useState({
+    email: "",
+    password: ""
+  })
+
+  const [signInSuccess, setSignInSuccess] = useState(false)
+  const [error, setError] = useState("")
+
+  const baseURL = "https://api.boxin.ng/api/v1"
+
 
   let history = useHistory()
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({
-      type: "ADD_USER",
-      item: {
-        user: true 
+    // dispatch({
+    //   type: "ADD_USER",
+    //   item: {
+    //     user: true 
+    //   }
+    // })
+    // history.push('/app')
+    const postLoginDataToDB = async => {  
+      axios.post(`${baseURL}/auth/login/`,userData)
+      .then(res => console.log(res.data))
+      .then(setSignInSuccess(true))
+      .catch(err => console.log(err))
+    }
+
+    postLoginDataToDB() 
+
+    // setSignInSuccess ?  history.push('/app') : history.push('/signin')
+    if(signInSuccess){
+      history.push('/app')
+    }
+    else{
+      alert("Error")
+    }
+
+    setUserData({
+      email: "",
+      password: ""
+    })
+
+  }
+
+  const handleChange = e => {
+    setUserData(prevUserData => {
+      return{
+        ...prevUserData,
+        [e.target.name]: e.target.value
       }
     })
-    // navigate('/app')
-    history.push('/app')
   }
 
   return (
@@ -47,20 +89,18 @@ export default function SignIn() {
           <form className="signUp__form">
             <div>
               <TextField
-                // fullWidth    
                 autoComplete="given-name"
-                name="userName"
+                name="email"
                 required
                 fullWidth
-                id="userName"
-                label="UserName or Email"
-                autoFocus
+                id="email"
+                label="Email"
+                onChange={handleChange}
               />
             </div>
             
             <div>
               <TextField
-                // fullWidth    
                 autoComplete="given-name"
                 name="password"
                 required
@@ -68,6 +108,8 @@ export default function SignIn() {
                 id="password"
                 label="Password"
                 autoFocus
+                onChange={handleChange}
+                type="password"
               />
             </div>
             
@@ -92,4 +134,3 @@ export default function SignIn() {
     </ThemeProvider>
   );
 }
-{/* <Copyright sx={{ mt: 5 }} /> */}
