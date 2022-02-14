@@ -90,6 +90,10 @@ export default function SignUp() {
     // postToDB()
   }, [userDetails])
 
+  const handleResendToken = () => {
+    history.push('/resendtoken')
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="sm" className="container">
@@ -217,6 +221,12 @@ export default function SignUp() {
             <button onClick={handleClick} className='form__button'>
               Create Account
             </button>
+            <button 
+              className="form__resend__token"
+              onClick={handleResendToken}
+            >
+                Resend Token ?
+              </button>
 
           </form>
         </div>

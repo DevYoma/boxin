@@ -2,36 +2,54 @@ import React, { useState } from 'react';
 import './VerifyComponent.css';
 import TextField from '@mui/material/TextField';
 import axios from 'axios'
-
+import { useHistory } from 'react-router-dom';
 
 const Verify = () => {  
-    const [data, setData] = useState({
+    const history = useHistory();
+    const [tokenData, setTokenData] = useState({
         token: ""
     })
 
+    const [verifyToLogin, setVerifyToLogin] = useState(false);
    
-
     const handleSubmit = (e)  => {
         e.preventDefault();
-        console.log(data.token)
+        console.log(tokenData.token)
         const baseURL = "https://api.boxin.ng/api/v1"
 
 
         const postTokenToDB = async () =>{
-            axios.post(`${baseURL}/auth/token/verify/`, data)
+            axios.post(`${baseURL}/auth/users/verify-token/`, tokenData)    
             .then(res => console.log(res.data))
+            .then(setVerifyToLogin(true)) //this should be true...
             .catch(err => console.log(err))
+            console.log(verifyToLogin);
+
+            // if(verifyToLogin){
+            //     history.push('/signin')
+            // }
+            // else{
+            //     alert("Error")
+            // }
         }
 
         postTokenToDB()
+        if(verifyToLogin){
+            history.push('/signin')
+        }
+        else{
+            alert("Error")
+        }
 
-        setData({
-            token: ""
-        })
+        // setData({
+        //     token: ""
+        // })
+       
+        // history.push('/signin')
     }
 
     const handleChange = (event) => {
-        setData(prevData => {
+        setTokenData(prevData => {
             return {
                 ...prevData,
                 [event.target.name]: event.target.value
@@ -50,7 +68,7 @@ const Verify = () => {
                     fullWidth
                     id="verifytoken"
                     label="Verify-Token"
-                    value={data.token}
+                    value={tokenData.token}
                     onChange={handleChange}
                 />
 
