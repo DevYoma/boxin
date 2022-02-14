@@ -17,6 +17,7 @@ import {
   Link
 } from "react-router-dom";
 import { useStateValue } from './context/StateProvider';
+import ResendToken from './components/ResendToken/ResendToken'
 
 
 
@@ -48,6 +49,9 @@ function App() {
               <VerifyComponent />
             </Route>
 
+            <Route path="/resendtoken">
+              <ResendToken />
+            </Route>
 
             <Route path="/">
               <SignUp />
