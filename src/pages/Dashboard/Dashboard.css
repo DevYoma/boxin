@@ -5,8 +5,9 @@
 }
 
 .dashboard__tab{
-    flex: 0.15;
+    /* flex: 0.15; */
     background: #091E42;
+    /* width: 180px; */
     /* display: none; */
     position: fixed;
     top: 0;
