@@ -54,6 +54,10 @@ const Dashboard = () => {
 
                 <div className="dashboard__main">
                     <Switch>
+                        <Route path='/app' exact>
+                            {/* <h1>This is the route, dont stress me</h1> */}
+                            <UserDashboard />
+                        </Route>
                         <Route path='/app/dashboard'>
                             {/* <h1>Dashboard</h1> */}
                             <UserDashboard />

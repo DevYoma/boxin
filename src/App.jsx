@@ -16,22 +16,21 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { useStateValue } from './context/StateProvider';
+// import { useStateValue } from './context/StateProvider';
 import ResendToken from './components/ResendToken/ResendToken'
 
 
 
 function App() {
-  const [{user}, dispatch] = useStateValue()
-  console.log(user)
-
+  // const [{user}, dispatch] = useStateValue()
+  // console.log(user)
 
   return (
 
     <React.Fragment>
       <CssBaseline />
       <div className="App">
-        {!user && (<Nav background="#fff"/>)}
+        {/* {!user && (<Nav background="#fff"/>)} */}
           <Switch>  
             <Route path="/app" exact>
               <Dashboard />

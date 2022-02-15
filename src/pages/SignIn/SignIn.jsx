@@ -31,7 +31,7 @@ export default function SignIn() {
   const [signInSuccess, setSignInSuccess] = useState(false)
   const [error, setError] = useState("")
 
-  const baseURL = "https://api.boxin.ng/api/v1"
+  const baseURL = "https://api.boxin.ng/api/v1";
 
 
   let history = useHistory()
@@ -45,27 +45,32 @@ export default function SignIn() {
     //   }
     // })
     // history.push('/app')
-    const postLoginDataToDB = async => {  
-      axios.post(`${baseURL}/auth/login/`,userData)
+    const postLoginDataToDB = async () => {  
+       axios.post(`${baseURL}/auth/login/`,userData)
       .then(res => console.log(res.data))
       .then(setSignInSuccess(true))
-      .catch(err => console.log(err))
+      .catch(err => {
+        console.log(err);
+      })
+      .then( signInSuccess ? history.push('/app') : alert("Error") )
     }
 
     postLoginDataToDB() 
 
-    // setSignInSuccess ?  history.push('/app') : history.push('/signin')
-    if(signInSuccess){
-      history.push('/app')
-    }
-    else{
-      alert("Error")
-    }
-
     setUserData({
       email: "",
-      password: ""
+      passsword: ""
     })
+
+    // setSignInSuccess ?  history.push('/app') : history.push('/signin')
+    // if(signInSuccess){
+    //   history.push('/app')
+    // }
+    // else{
+    //   alert("Error")
+    // }
+
+    // history.push('/app')    
 
   }
 
@@ -96,6 +101,7 @@ export default function SignIn() {
                 id="email"
                 label="Email"
                 onChange={handleChange}
+                autoFocus
               />
             </div>
             
@@ -107,7 +113,6 @@ export default function SignIn() {
                 fullWidth
                 id="password"
                 label="Password"
-                autoFocus
                 onChange={handleChange}
                 type="password"
               />
