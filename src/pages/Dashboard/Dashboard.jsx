@@ -18,23 +18,24 @@ import Customers from '../../components/Customers/Customers';
 import Transactions from '../../components/Transactions/Transactions';
 import UserDashboard from '../../components/UserDashboard/UserDashboard'
 
+
 const Dashboard = () => {
 
     // let navigate = useNavigate()
-    const [{user}, dispatch] = useStateValue()
-    console.log(user)
+    // const [{user}, dispatch] = useStateValue()
+    // console.log(user)
     
     // const [userState, setUserState] = useState(user)
 
-    useEffect(() => {
-    dispatch({
-        type: "ADD_USER",
-        item: {
-            user: true
-        }
-    })
+    // useEffect(() => {
+    // dispatch({
+    //     type: "ADD_USER",
+    //     item: {
+    //         user: true
+    //     }
+    // })
 
-    }, user)
+    // }, user)
 
     useEffect(() => {
         window.addEventListener("popstate", () => {

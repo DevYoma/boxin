@@ -98,7 +98,7 @@
 }
 
 .top > h2{
-    color: red;
+    /* color: red; */
     font-size: xx-large;
     font-weight: 600;
 }
@@ -135,4 +135,8 @@
     /* background: red; */
     width: 100%;
     padding: 1em 0 0 1em;
+}
+
+.color{
+    color: #4270b7;
 }

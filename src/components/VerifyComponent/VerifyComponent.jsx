@@ -25,12 +25,6 @@ const Verify = () => {
             .catch(err => console.log(err))
             console.log(verifyToLogin);
 
-            // if(verifyToLogin){
-            //     history.push('/signin')
-            // }
-            // else{
-            //     alert("Error")
-            // }
         }
 
         postTokenToDB()

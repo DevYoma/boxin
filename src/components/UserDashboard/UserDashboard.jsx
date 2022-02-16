@@ -4,11 +4,25 @@ import UserDashboardButton from '../../components/UserDashboardButton/UserDashbo
 import Paper from '@mui/material/Paper';
 import DayButton from '../DayButton/DayButton';
 
+
 const UserDashboard = () => {
+    const greeting = () => {
+        const date = new Date()
+        if(date.getHours() < 12){
+            return "Morning"
+        }
+        else if (date.getHours() >=  12 && date.getHours() < 16){
+            return "Afternoon"
+        }
+        else{
+            return "Evening"
+        }
+    }
+
     return ( 
         <div className="userDashboard">
             <div className="userDashboard__head">
-                <h1>Dashboard</h1>
+                <h1>Good {greeting()}, Tobi </h1>
 
                 <UserDashboardButton name="TRANSFER FUNDS" background="white" color="black"/>
                 <UserDashboardButton name="FUND ACCOUNT" background="white" color="black"/>
@@ -18,17 +32,17 @@ const UserDashboard = () => {
             <div className="userDashboard__details">
                 <Paper elevation={3} className='paper'>
                     <small>FUNDS</small>
-                    <div className="userDashboard__amount red">0.00 <small>NGN</small></div>
+                    <div className="userDashboard__amount color">500,000.00 <small>NGN</small></div>
                 </Paper>
 
                 <Paper elevation={3} className='paper'>
                     <small>ESCROW</small>
-                    <div className="userDashboard__amount">0.00 <small>NGN</small></div>
+                    <div className="userDashboard__amount">50,000.00 <small>NGN</small></div>
                 </Paper>
 
                 <Paper elevation={3} className='paper'>
                     <small>CREDITS</small>
-                    <div className="userDashboard__amount">0.00 <small>NGN</small></div>
+                    <div className="userDashboard__amount">10,000.00 <small>NGN</small></div>
                 </Paper>
 
                 <Paper elevation={3} className='paper'>
@@ -39,11 +53,11 @@ const UserDashboard = () => {
             </div>
 
             <div className="userDashboard__daySorting">
-                <DayButton name="TODAY" background="white" color="black"/>
+                {/* <DayButton name="TODAY" background="white" color="black"/> */}
                 <DayButton name="THIS WEEK" background="white" color="black"/>
                 <DayButton name="THIS MONTH" background="white" color="black"/>
-                <DayButton name="THIS QUATER" background="white" color="black"/>
-                <DayButton name="THIS YEAR" background="white" color="black"/>
+                {/* <DayButton name="THIS QUATER" background="white" color="black"/> */}
+                {/* <DayButton name="THIS YEAR" background="white" color="black"/> */}
             </div>
 
             <div className="userDashboard__deliveries">
@@ -55,7 +69,7 @@ const UserDashboard = () => {
                 <div className="userDashboard__deliveriesSide">
                     <div className="top">
                         <h4>DELIVERY SPEND</h4>
-                        <h2>&#8358;0.00</h2>
+                        <h2 className='color'>&#8358;100,000.00</h2>
                         <small>This is how much you've spent on deliveries in the specified period</small>
                     </div>
 
@@ -63,7 +77,7 @@ const UserDashboard = () => {
 
                     <div className="bottom">
                         <h4>E-COMMERCE SALES</h4>
-                        <h2>&#8358;0.00</h2>
+                        <h2>&#8358;1,000,000.00</h2>
                         <small>This is how much you've spent on deliveries in the specified period</small>
                     </div>
 
@@ -74,7 +88,7 @@ const UserDashboard = () => {
                 <div className="userDashboard__orders box">
                     <h4>ORDERS</h4>
                     <p>Total orders received within the specified period</p>
-                    <p className="amount">&#8358;0.00</p>
+                    <p className="amount">0</p>
                 </div>
                 <div className="userDashboard__revenue box">
                     <h4>REVENUE</h4>
