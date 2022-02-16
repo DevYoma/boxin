@@ -3,7 +3,60 @@ import './UserDashboard.css'
 import UserDashboardButton from '../../components/UserDashboardButton/UserDashboardButton';
 import Paper from '@mui/material/Paper';
 import DayButton from '../DayButton/DayButton';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+  import { Bar } from 'react-chartjs-2';
+  import faker from 'faker';
 
+  
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+
+  
+export const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart',
+      },
+    },
+  };
+  
+  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  
+  export const data = {
+    labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+        // backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: "#4270b7"
+      },
+      {
+        label: 'Dataset 2',
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      },
+    ],
+  };
 
 const UserDashboard = () => {
     const greeting = () => {
@@ -64,6 +117,10 @@ const UserDashboard = () => {
                 <div className="userDashboard__deliveriesMain">
                     <h4>DELIVERY SPEND</h4>
                     <p>Total deliveries within the specified period </p>
+
+                    <div>
+                        <Bar options={options} data={data} />
+                    </div>
                 </div>
 
                 <div className="userDashboard__deliveriesSide">
