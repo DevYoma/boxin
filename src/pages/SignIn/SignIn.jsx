@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
+// import TextField from '@mui/material/TextField';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -41,7 +42,7 @@ export default function SignIn() {
     const postLoginDataToDB = async () => {  
       axios.post(`${baseURL}/auth/login/`,userData)
       .then(res => console.log(res.data))
-      .then(res => console.log(res.data.access))
+      .then(res => console.log(res.data?.access))
       .then(setSignInSuccess(true))
       // .then(loginAccessToken ? console.log('Present') : console.log('Not Present'))
       .catch(err => {
@@ -50,6 +51,7 @@ export default function SignIn() {
     }
 
     postLoginDataToDB() 
+
 
     signInSuccess ? history.push('/app') : null;
 
@@ -90,7 +92,6 @@ export default function SignIn() {
           <form className="signUp__form">
             <div>
               <TextField
-                autoComplete="given-name"
                 name="email"
                 required
                 fullWidth
@@ -103,7 +104,6 @@ export default function SignIn() {
             
             <div>
               <TextField
-                autoComplete="given-name"
                 name="password"
                 required
                 fullWidth
@@ -124,7 +124,7 @@ export default function SignIn() {
               By clicking create account, I represent, I have  read, understood, and agreed to the sendbox's <span className="red">Privacy Policy</span> and <span className="red">Terms of Service</span>
             </p>
             <button 
-              onClick={handleSubmit}
+              onSubmit={handleSubmit}
               className='form__button'>
               Log In
             </button>
