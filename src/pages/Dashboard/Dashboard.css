@@ -6,7 +6,8 @@
 
 .dashboard__tab{
     /* flex: 0.15; */
-    background: #091E42;
+    /* background: #091E42; */
+    background: #12113d;
     /* width: 180px; */
     /* display: none; */
     position: fixed;

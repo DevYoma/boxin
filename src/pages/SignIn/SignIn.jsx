@@ -15,14 +15,15 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link, useHistory } from 'react-router-dom';
 // import { useStateValue } from '../context/StateProvider'
-import { useStateValue } from '../../context/StateProvider'
+// import { useStateValue } from '../../context/StateProvider'
 // import './SignUp.css';
 import axios from 'axios';
 
 const theme = createTheme();
 
 export default function SignIn() {
-  const [{}, dispatch] = useStateValue()
+  // const [{}, dispatch] = useStateValue()
+  let history = useHistory()
   const [userData, setUserData] = useState({
     email: "",
     password: ""
@@ -30,45 +31,40 @@ export default function SignIn() {
 
   const [signInSuccess, setSignInSuccess] = useState(false)
   const [error, setError] = useState("")
+  const [loginAccessToken, setLoginAccessToken] = useState("")
 
   const baseURL = "https://api.boxin.ng/api/v1";
 
-
-  let history = useHistory()
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    // dispatch({
-    //   type: "ADD_USER",
-    //   item: {
-    //     user: true 
-    //   }
-    // })
-    // history.push('/app')
     const postLoginDataToDB = async () => {  
-       axios.post(`${baseURL}/auth/login/`,userData)
+      axios.post(`${baseURL}/auth/login/`,userData)
       .then(res => console.log(res.data))
+      .then(res => console.log(res.data.access))
       .then(setSignInSuccess(true))
+      // .then(loginAccessToken ? console.log('Present') : console.log('Not Present'))
       .catch(err => {
         console.log(err);
       })
-      .then( signInSuccess ? history.push('/app') : alert("Error") )
     }
 
     postLoginDataToDB() 
+
+    signInSuccess ? history.push('/app') : null;
+
+    // if(loginAccessToken){
+    //   console.log('Present')
+    // }
+    // else{
+    //   console.log("Not Present")
+    //   return ==> this is what will happen when the user is not verified...
+    // }
 
     setUserData({
       email: "",
       passsword: ""
     })
-
-    // setSignInSuccess ?  history.push('/app') : history.push('/signin')
-    // if(signInSuccess){
-    //   history.push('/app')
-    // }
-    // else{
-    //   alert("Error")
-    // }
 
     // history.push('/app')    
 

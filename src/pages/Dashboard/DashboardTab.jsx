@@ -7,23 +7,23 @@ import { useHistory } from 'react-router-dom';
 
 const DashboardTab = () => {
     // let navigate = useNavigate()
-    const [{user}, dispatch] = useStateValue()
+    // const [{user}, dispatch] = useStateValue()
     const history = useHistory()
 
 
-    const handleLogout = () => {
-        if( confirm("Are you sure you want to log out")){
-            dispatch({
-                type: "REMOVE_USER",
-                item: {
-                    user: null
-                }
-            })
-            history.push('/signin')
-            // navigate('/signin')
-        }
+    // const handleLogout = () => {
+    //     if( confirm("Are you sure you want to log out")){
+    //         dispatch({
+    //             type: "REMOVE_USER",
+    //             item: {
+    //                 user: null
+    //             }
+    //         })
+    //         history.push('/signin')
+    //         // navigate('/signin')
+    //     }
         
-    }
+    // }
 
     const mainTabs = [
         {
@@ -145,7 +145,7 @@ const DashboardTab = () => {
             </div>
 
             {/* <div className='dashboardTab__logout'> */}
-                <button onClick={handleLogout}>
+                <button onClick={() => alert("working")}>
                     Logout
                 </button>
             {/* </div> */}
