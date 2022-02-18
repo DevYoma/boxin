@@ -45,8 +45,14 @@ export default function SignUp() {
     const postToDB = async () => {
       axios.post(`${baseURL}/auth/users/`, userDetails)
       // .then(res => res.json())
-      .then(res => {console.log(res.data)})
-      .catch(err => {console.log(err)})
+      .then(res => {
+        console.log(res.data)
+        history.push('/verifytoken')
+      })
+      .catch(err => {
+        console.log(err)
+        alert('Please fill all required fields')
+      })
 
     }
 
@@ -64,7 +70,7 @@ export default function SignUp() {
       password: "",
     })
 
-    history.push('/verifytoken')
+    // history.push('/verifytoken')
   }
 
   const handleChange = event => {
