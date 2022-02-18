@@ -20,20 +20,30 @@ const Verify = () => {
 
         const postTokenToDB = async () =>{
             axios.post(`${baseURL}/auth/users/verify-token/`, tokenData)    
-            .then(res => console.log(res.data))
-            .then(setVerifyToLogin(true)) //this should be true...
-            .catch(err => console.log(err))
-            console.log(verifyToLogin);
+            .then(res => {
+                console.log(res.data)
+                if (res.data.valid) {
+                    history.push('/signin')
+                } else {
+                    alert('Token is invalid')
+                }
+            })
+            // .then(setVerifyToLogin(true)) //this should be true...
+            .catch(err => {
+                console.log(err)
+                alert('Token is invalid')
+            })
+            // console.log(verifyToLogin);
 
         }
 
         postTokenToDB()
-        if(verifyToLogin){
-            history.push('/signin')
-        }
-        else{
-            alert("Error")
-        }
+        // if(verifyToLogin){
+        //     history.push('/signin')
+        // }
+        // else{
+        //     alert("Error")
+        // }
 
         // setData({
         //     token: ""
