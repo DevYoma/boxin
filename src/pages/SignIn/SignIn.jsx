@@ -40,20 +40,27 @@ export default function SignIn() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const postLoginDataToDB = async () => {  
+      // console.log(userData)
       axios.post(`${baseURL}/auth/login/`,userData)
-      .then(res => console.log(res.data))
-      .then(res => console.log(res.data?.access))
-      .then(setSignInSuccess(true))
+      .then(res => {
+        console.log(res.data)
+        setSignInSuccess(true)
+        setLoginAccessToken(res.data.access)
+        history.push('/app')
+      })
+      // .then(res => console.log(res.data?.access))
+      // .then(setSignInSuccess(true))
       // .then(loginAccessToken ? console.log('Present') : console.log('Not Present'))
       .catch(err => {
         console.log(err);
+        alert('Invalid Login details')
       })
     }
 
     postLoginDataToDB() 
 
 
-    signInSuccess ? history.push('/app') : null;
+    // signInSuccess ? history.push('/app') : null;
 
     // if(loginAccessToken){
     //   console.log('Present')
@@ -124,7 +131,8 @@ export default function SignIn() {
               By clicking create account, I represent, I have  read, understood, and agreed to the sendbox's <span className="red">Privacy Policy</span> and <span className="red">Terms of Service</span>
             </p>
             <button 
-              onSubmit={handleSubmit}
+              onClick={handleSubmit}
+              type='submit'
               className='form__button'>
               Log In
             </button>
