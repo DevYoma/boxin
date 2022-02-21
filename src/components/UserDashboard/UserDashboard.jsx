@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './UserDashboard.css'
 import UserDashboardButton from '../../components/UserDashboardButton/UserDashboardButton';
 import Paper from '@mui/material/Paper';
@@ -14,6 +16,7 @@ import {
   } from 'chart.js';
   import { Bar } from 'react-chartjs-2';
   import faker from 'faker';
+import axios from 'axios';
 
   
 ChartJS.register(
@@ -59,6 +62,48 @@ export const options = {
   };
 
 const UserDashboard = () => {
+    const [storeDetails, setStoreDetails] = useState({
+        id: "",
+        store_domain: "",
+        store_name: "",
+        store_description: "",
+        store_shop_number: 0,
+        store_street_name: "",
+        store_city: "",
+        store_state: "",
+        store_postal_code: "",
+        store_escrow: "",
+        primary_store_color: "",
+        secondary_store_color: "",
+        next_pickup_date: "2022-02-21",
+        customer_pay_delivery_fee: true,
+        user: ""
+    })
+
+    useEffect(() => {
+        let token = JSON.parse(localStorage.getItem('token'))
+        let authorizationHeader = `Bearer ${token}`
+        // let history = useHistory()
+
+        const baseURL = 'https://api.boxin.ng/api/v1/store'
+
+        const getStoreDetails = async () => {
+            axios.get(`${baseURL}/get-store/`, {headers: {Authoriztion: authorizationHeader}})
+            .then(res => {
+                console.log(res.data)
+            })
+        }
+
+        getStoreDetails()
+
+    //     if (token) {
+    //         getStoreDetails()
+    //     } else {
+    //         history.push('/signin')
+    //     }
+
+    })
+
     const greeting = () => {
         const date = new Date()
         if(date.getHours() < 12){
