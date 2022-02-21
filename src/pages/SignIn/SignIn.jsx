@@ -46,6 +46,7 @@ export default function SignIn() {
         console.log(res.data)
         setSignInSuccess(true)
         setLoginAccessToken(res.data.access)
+        localStorage.setItem('token', JSON.stringify(res.data.access))
         history.push('/app')
       })
       // .then(res => console.log(res.data?.access))
