@@ -1,8 +1,10 @@
 import React from 'react';
+import  { useState, useEffect } from 'react'
 import './DashboardTab.css'
 import { Link } from 'react-router-dom';
 import { useStateValue } from '../../context/StateProvider';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios'
 
 
 const DashboardTab = () => {
@@ -10,7 +12,48 @@ const DashboardTab = () => {
     // const [{user}, dispatch] = useStateValue()
     const history = useHistory()
 
+    const [storeDetails, setStoreDetails] = useState({
+        id: "",
+        store_domain: "",
+        store_name: "",
+        store_description: "",
+        store_shop_number: 0,
+        store_street_name: "",
+        store_city: "",
+        store_state: "",
+        store_postal_code: "",
+        store_escrow: "",
+        primary_store_color: "",
+        secondary_store_color: "",
+        next_pickup_date: "2022-02-21",
+        customer_pay_delivery_fee: true,
+        user: null
+    })
 
+   useEffect(() => {
+    let token = JSON.parse(localStorage.getItem('token'))
+    let authorizationHeader = `Bearer ${token}`
+    // let history = useHistory()
+
+    // console.log(token)
+
+    const baseURL = 'https://api.boxin.ng/api/v1/store'
+
+    const getStoreDetails = async () => {
+        axios.get(`${baseURL}/get-store/`, {headers: {Authorization: authorizationHeader}})
+        .then(res => {
+            console.log(res.data)
+            setStoreDetails(res.data.store_details)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }    
+        
+    if (storeDetails.user === null) {
+        getStoreDetails()
+    }
+   }, [storeDetails])
     // const handleLogout = () => {
     //     if( confirm("Are you sure you want to log out")){
     //         dispatch({
@@ -31,13 +74,13 @@ const DashboardTab = () => {
             name: "Dashboard", 
             link: '/dashboard'
         },
+        // {
+        //     id: 2,
+        //     name: "View my Store",
+        //     link: `https://${storeDetails.store_domain}.boxin.site`
+        // },
         {
-            id: 2,
-            name: "View my Store",
-            link: '/view-my-store'
-        },
-        {
-            id: 3, 
+            id: 2, 
             name: "Settings",
             link: '/setting'
         }
@@ -127,6 +170,9 @@ const DashboardTab = () => {
         <div className="dashboardTab">
             <div>
                 {mainTabsMapping}
+                <a key="3" className='dashboardTab__link'  href={`https://${storeDetails.store_domain}.boxin.site`} target="_blank">
+            <p className='dashboardTab__link'>View my store</p>
+        </a>
             </div>
 
             <div>

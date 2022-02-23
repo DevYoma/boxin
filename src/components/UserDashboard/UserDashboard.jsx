@@ -77,13 +77,13 @@ const UserDashboard = () => {
         secondary_store_color: "",
         next_pickup_date: "2022-02-21",
         customer_pay_delivery_fee: true,
-        user: ""
+        user: null
     })
 
     const [userDetails, setUserDetails] = useState({
         firstname: "",
         lastname: "",
-        email: ""
+        email: null
     })
 
     useEffect(() => {
@@ -99,7 +99,7 @@ const UserDashboard = () => {
             axios.get(`${baseURL}/get-store/`, {headers: {Authorization: authorizationHeader}})
             .then(res => {
                 console.log(res.data)
-                setStoreDetails(res.data)
+                setStoreDetails(res.data.store_details)
             })
             .catch(err => {
                 console.log(err)
@@ -116,8 +116,13 @@ const UserDashboard = () => {
             // console.log(decoded)
         }
 
-        decodeToken()
-        getStoreDetails()
+        if (userDetails.email === null) {
+            decodeToken()
+        }
+        
+        if (storeDetails.user === null) {
+            getStoreDetails()
+        }
 
     //     if (token) {
     //         getStoreDetails()
