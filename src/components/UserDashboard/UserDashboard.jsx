@@ -17,7 +17,7 @@ import {
   import { Bar } from 'react-chartjs-2';
   import faker from 'faker';
 import axios from 'axios';
-
+import jwt_decode from 'jwt-decode';
   
 ChartJS.register(
     CategoryScale,
@@ -80,20 +80,43 @@ const UserDashboard = () => {
         user: ""
     })
 
+    const [userDetails, setUserDetails] = useState({
+        firstname: "",
+        lastname: "",
+        email: ""
+    })
+
     useEffect(() => {
         let token = JSON.parse(localStorage.getItem('token'))
         let authorizationHeader = `Bearer ${token}`
         // let history = useHistory()
 
+        // console.log(token)
+
         const baseURL = 'https://api.boxin.ng/api/v1/store'
 
         const getStoreDetails = async () => {
-            axios.get(`${baseURL}/get-store/`, {headers: {Authoriztion: authorizationHeader}})
+            axios.get(`${baseURL}/get-store/`, {headers: {Authorization: authorizationHeader}})
             .then(res => {
                 console.log(res.data)
+                setStoreDetails(res.data)
+            })
+            .catch(err => {
+                console.log(err)
             })
         }
 
+        const decodeToken = () => {
+            let decoded = jwt_decode(token)
+            setUserDetails({
+                firstname: decoded.firstname,
+                lastname: decoded.lastname,
+                email: decoded.email
+            })
+            // console.log(decoded)
+        }
+
+        decodeToken()
         getStoreDetails()
 
     //     if (token) {
@@ -102,7 +125,7 @@ const UserDashboard = () => {
     //         history.push('/signin')
     //     }
 
-    })
+    }, [storeDetails, userDetails])
 
     const greeting = () => {
         const date = new Date()
@@ -120,7 +143,7 @@ const UserDashboard = () => {
     return ( 
         <div className="userDashboard">
             <div className="userDashboard__head">
-                <h1>Good {greeting()}, Tobi </h1>
+                <h1>Good {greeting()}, {userDetails.firstname} </h1>
 
                 <UserDashboardButton name="TRANSFER FUNDS" background="white" color="black"/>
                 <UserDashboardButton name="FUND ACCOUNT" background="white" color="black"/>
@@ -180,13 +203,13 @@ const UserDashboard = () => {
                     <div className="bottom">
                         <h4>E-COMMERCE SALES</h4>
                         <h2>&#8358;1,000,000.00</h2>
-                        <small>This is how much you've spent on deliveries in the specified period</small>
+                        <small>This is how much revenue you've made in the specified period</small>
                     </div>
 
                 </div>
             </div> 
 
-            <div className="userDashboard__bottom">
+            {/* <div className="userDashboard__bottom">
                 <div className="userDashboard__orders box">
                     <h4>ORDERS</h4>
                     <p>Total orders received within the specified period</p>
@@ -202,7 +225,7 @@ const UserDashboard = () => {
                     <p>Unique customers within the specified period</p>
                     <p className="no_of_customers">0</p>
                 </div>
-            </div>
+            </div> */}
         </div>
      );
 }
