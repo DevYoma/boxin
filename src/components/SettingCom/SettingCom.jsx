@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Button from '../Button/Button'
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem'
+import axios from 'axios'
 
 const SettingCom = () => {
 
@@ -28,6 +29,49 @@ const SettingCom = () => {
       ];
 
       const [currency, setCurrency] = React.useState('EUR');
+
+      const [storeDetails, setStoreDetails] = React.useState({
+        id: "",
+        store_domain: "",
+        store_name: "",
+        store_description: "",
+        store_shop_number: 0,
+        store_street_name: "",
+        store_city: "",
+        store_state: "",
+        store_postal_code: "",
+        store_escrow: "",
+        primary_store_color: "",
+        secondary_store_color: "",
+        next_pickup_date: "2022-02-21",
+        customer_pay_delivery_fee: true,
+        user: null
+    })
+
+   React.useEffect(() => {
+    let token = JSON.parse(localStorage.getItem('token'))
+    let authorizationHeader = `Bearer ${token}`
+    // let history = useHistory()
+
+    // console.log(token)
+
+    const baseURL = 'https://api.boxin.ng/api/v1/store'
+
+    const getStoreDetails = async () => {
+        axios.get(`${baseURL}/get-store/`, {headers: {Authorization: authorizationHeader}})
+        .then(res => {
+            console.log(res.data)
+            setStoreDetails(res.data.store_details)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }    
+        
+    if (storeDetails.user === null) {
+        getStoreDetails()
+    }
+   }, [storeDetails])
 
         const handleChange = (e) => {
             setCurrency(e.target.value);
@@ -55,6 +99,7 @@ const SettingCom = () => {
                         id="standard-basic" 
                         label="Website Name" 
                         variant="standard"
+                        defaultValue={storeDetails.store_domain}
                         className="settingCom__input"
                     />
 
@@ -67,6 +112,7 @@ const SettingCom = () => {
                 <TextField 
                     id="outlined-basic" 
                     label="Business Name" 
+                    defaultValue={storeDetails.store_name}
                     variant="outlined"
                     className="width"
                 />
@@ -78,14 +124,14 @@ const SettingCom = () => {
                         label="Describe your business"
                         multiline
                         rows={4}
-                        defaultValue="We sell all your perfumes"
+                        defaultValue={storeDetails.store_description}
                         className="width"
                     />
                 </div>
 
                 <hr />
 
-                <div className="settingCom__category">
+                {/* <div className="settingCom__category">
                     <p>WHAT CATEGORY BEST DECRIBES YOUR BUSINESS?</p>
                     <div className="settingCom__categoryButton">
                         <Button name="Wigs and Hair Extensions"/>                        
@@ -98,13 +144,13 @@ const SettingCom = () => {
                         <Button name="Clothing and Fashion"/>                        
                     </div>
 
-                </div>
+                </div> */}
 
                 <hr />
 
                 <div className="settingCom__location">
                     <div className="settingCom__locationDetails">
-                        <div>
+                        {/* <div>
                             <p>WHERE IS YOUR PRIMARY BUSINESS LOCATION?</p>
                             <TextField
                                 id="outlined-select-currency"
@@ -121,7 +167,7 @@ const SettingCom = () => {
                                     </MenuItem>
                                 ))}
                             </TextField>
-                        </div>
+                        </div> */}
                         <div>
                             <p>BUSINESS ADDRESS</p>
                             <TextField 
