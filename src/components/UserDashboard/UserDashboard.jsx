@@ -141,7 +141,7 @@ const UserDashboard = () => {
                 </div>
             </div> 
 
-            <div className="userDashboard__bottom">
+            {/* <div className="userDashboard__bottom">
                 <div className="userDashboard__orders box">
                     <h4>ORDERS</h4>
                     <p>Total orders received within the specified period</p>
@@ -157,7 +157,7 @@ const UserDashboard = () => {
                     <p>Unique customers within the specified period</p>
                     <p className="no_of_customers">0</p>
                 </div>
-            </div>
+            </div> */}
         </div>
      );
 }
