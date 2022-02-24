@@ -1,26 +1,39 @@
-.customers{
+.products{
     height: 100vh;
     overflow-y: scroll;
     padding: 40px 40px 0px;
 }
 
+.products__heading{
+    /* border: 1px solid red; */
+    position: relative;
+}
 
-.customers__subHeading{
+.products__heading > .products__button{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+    background: #091E42;
+    color: white;
+}
+
+.products__subHeading{
     display: flex;
     margin-bottom: 30px;
 }
 
-.customers__text{
+.products__text{
     margin-right: auto;
 }
 
-.customers__text > p{
+.products__text > p{
     color: #9297B4;
     font-size: 14px;
     font-weight: 600;
 }
 
-.customers__requestButton{
+.products__requestButton{
     background: #091E42;
     color: white;
     border: none;
@@ -29,7 +42,7 @@
     cursor: pointer;
 }
 
-.customers__buttons{
+.products__buttons{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -47,20 +60,20 @@ p#special{
 }
 
 
-.customers__conditions{
+.products__conditions{
     display: flex;
     align-items: center;
     justify-content: space-around;
     gap: 10px;
 }
 
-.customers__filterButtons{
+.products__filterButtons{
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.customers__filterButton{
+.products__filterButton{
     /* background: red; */
     padding: 5px;
     border: none;
@@ -74,6 +87,8 @@ p#special{
     cursor: not-allowed;
 }
 
-
-
-
+.products__table{
+    /* border: 1px solid red; */
+    /* height: 5vh; */
+    margin-top: 35px;
+}

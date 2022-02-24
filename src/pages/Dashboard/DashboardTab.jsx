@@ -135,8 +135,8 @@ const DashboardTab = () => {
         },
         {
             id: 3,
-            name: "Customers",
-            link: '/customers'
+            name: "AddNewProduct",
+            link: '/add-product'
         }
     ]
 
