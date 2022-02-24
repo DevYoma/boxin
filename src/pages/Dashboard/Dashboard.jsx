@@ -14,7 +14,7 @@ import Transfers from '../../components/Transfers/Transfers'
 import Request from '../../components/Requests/Request'
 import Product from '../../components/Products/Product'
 import Orders from '../../components/Orders/Orders'
-import Customers from '../../components/Customers/Customers';
+import AddNewProduct from '../../components/AddNewProduct/AddNewProduct';
 import Transactions from '../../components/Transactions/Transactions';
 import UserDashboard from '../../components/UserDashboard/UserDashboard'
 
@@ -101,8 +101,8 @@ const Dashboard = () => {
                             <Orders />
                         </Route>
 
-                        <Route path='/app/customers'>
-                            <Customers />
+                        <Route path='/app/add-product'>
+                            <AddNewProduct />
                         </Route>
 
                         <Route path='/app/transactions'>
