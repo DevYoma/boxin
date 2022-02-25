@@ -1,3 +1,24 @@
 .verifyComponent{
-    margin-top: 100px;
+    /* margin-top: 100px; */
+    margin: 0 auto;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    min-height: 100vh;
+    /* background: red; */
+}
+/* 
+.verifyComponent > button {
+    background: #4270b7;
+    color: red;
+} */
+
+.verifyComponent__Button{
+    background: #4270b7;
+    color: red;
+    padding: 7px 0;
+    outline: none;
+    color: white;
 }

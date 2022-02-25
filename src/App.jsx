@@ -18,6 +18,7 @@ import {
 } from "react-router-dom";
 // import { useStateValue } from './context/StateProvider';
 import ResendToken from './components/ResendToken/ResendToken'
+import CreateStore from './components/CreateStore/CreateStore';
 
 
 
@@ -32,27 +33,28 @@ function App() {
       <div className="App">
         {/* {!user && (<Nav background="#fff"/>)} */}
           <Switch>  
+
             <Route path="/app" exact>
               <Dashboard />
             </Route>
-
-            {/* <Route path="app/view-my-store" exact>
-                <Store />
-            </Route> */}
-
+            
             <Route path="/signin" exact>
               <SignIn />
             </Route>
 
-            <Route path="/verifytoken">
+            <Route path="/verifytoken" exact>
               <VerifyComponent />
             </Route>
 
-            <Route path="/resendtoken">
+            <Route path="/resendtoken" exact>
               <ResendToken />
             </Route>
 
-            <Route path="/">
+            <Route path="/createstore" exact>
+              <CreateStore />
+            </Route>
+
+            <Route path="/" exact>
               <SignUp />
             </Route>
 

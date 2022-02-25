@@ -136,7 +136,7 @@ const UserDashboard = () => {
         const date = new Date()
         if(date.getHours() < 12){
             return "Morning"
-        }
+        }   
         else if (date.getHours() >=  12 && date.getHours() < 16){
             return "Afternoon"
         }

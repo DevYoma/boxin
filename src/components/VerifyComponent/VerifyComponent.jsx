@@ -38,18 +38,7 @@ const Verify = () => {
         }
 
         postTokenToDB()
-        // if(verifyToLogin){
-        //     history.push('/signin')
-        // }
-        // else{
-        //     alert("Error")
-        // }
-
-        // setData({
-        //     token: ""
-        // })
-       
-        // history.push('/signin')
+      
     }
 
     const handleChange = (event) => {
@@ -63,7 +52,7 @@ const Verify = () => {
 
     return ( 
         <div className='verifyComponent'>
-            <h1>Verify Component</h1>
+            <h1>A token has been sent to your email</h1>
 
             <form onSubmit={handleSubmit}>
                 <TextField
@@ -74,9 +63,9 @@ const Verify = () => {
                     label="Verify-Token"
                     value={tokenData.token}
                     onChange={handleChange}
-                />
+                /> <br />
 
-                <button>Submit</button>
+                <button className='verifyComponent__Button'>Submit</button>
             </form>
         </div>
      );

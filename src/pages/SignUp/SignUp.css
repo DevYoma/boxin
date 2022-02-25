@@ -55,9 +55,10 @@ form > *{
     border-style: solid;
     padding: 12px 24px;
     border-width: 1px;
-    border-color: rgb(237, 47, 89);
+    /* border-color: rgb(237, 47, 89); */
     border-radius: 1px;
-    background-color: rgb(237, 47, 89);
+    /* background-color: rgb(237, 47, 89); */
+    background: #4270b7;
     color: rgb(255, 255, 255);
     letter-spacing: 0.25px;
     font-size: 0.6875rem;
