@@ -87,39 +87,39 @@ const DashboardTab = () => {
     ]
 
     const shippingTabs = [
-        {
-            id: 1,
-            name: "Deliveries", 
-            link: '/deliveries'
-        },
-        {
-            id: 2,
-            name: "Batch",
-            link: '/batch'
-        },
+    //     {
+    //         id: 1,
+    //         name: "Deliveries", 
+    //         link: '/deliveries'
+    //     },
+        // {
+        //     id: 2,
+        //     name: "Batch",
+        //     link: '/batch'
+        // },
     ]
 
     const paymentTabs = [
-        {
-            id: 1,
-            name: "Topups", 
-            link: '/topup'
-        },
-        {
-            id: 2,
-            name: "Transfers",
-            link: '/transfers'
-        },
-        {
-            id: 3,
-            name: "Requests",
-            link: '/request'
-        },
-        {
-            id: 4,
-            name: "Transactions",
-            link: '/transactions'
-        }
+        // {
+        //     id: 1,
+        //     name: "Topups", 
+        //     link: '/topup'
+        // },
+        // {
+        //     id: 2,
+        //     name: "Transfers",
+        //     link: '/transfers'
+        // },
+        // {
+        //     id: 3,
+        //     name: "Requests",
+        //     link: '/request'
+        // },
+        // {
+        //     id: 4,
+        //     name: "Transactions",
+        //     link: '/transactions'
+        // }
     ]
 
     const eCommerce = [
@@ -131,7 +131,7 @@ const DashboardTab = () => {
         {
             id: 2,
             name: "Orders",
-            link: '/orders'
+            link: '/deliveries'
         },
         {
             id: 3,
@@ -146,19 +146,19 @@ const DashboardTab = () => {
         </p>)
     )
 
-    const shippingTabsMapping = (
-        shippingTabs.map(shippingItem => <p key={shippingItem.id}>
-            <Link className='dashboardTab__link' to={`/app${shippingItem.link}`}>{shippingItem.name}</Link>
-        </p>)
-    )
+    // const shippingTabsMapping = (
+    //     shippingTabs.map(shippingItem => <p key={shippingItem.id}>
+    //         <Link className='dashboardTab__link' to={`/app${shippingItem.link}`}>{shippingItem.name}</Link>
+    //     </p>)
+    // )
 
     // to={`${shippingItem.link}`
 
-    const paymentTabsMapping = (
-        paymentTabs.map(paymentItem => <p key={paymentItem.id}>
-            <Link className='dashboardTab__link'  to={`/app${paymentItem.link}`}>{paymentItem.name}</Link>
-        </p>)
-    )
+    // const paymentTabsMapping = (
+    //     paymentTabs.map(paymentItem => <p key={paymentItem.id}>
+    //         <Link className='dashboardTab__link'  to={`/app${paymentItem.link}`}>{paymentItem.name}</Link>
+    //     </p>)
+    // )
 
     const eCommerceMapping = (
         eCommerce.map(eCommerceItem => <p key={eCommerceItem.id}>
@@ -175,15 +175,15 @@ const DashboardTab = () => {
         </a>
             </div>
 
-            <div>
+            {/* <div>
                 <small>Shipping</small>
                 {shippingTabsMapping}
-            </div>
+            </div> */}
 
-            <div>
+            {/* <div>
                 <small>Payment</small>
                 {paymentTabsMapping}
-            </div>
+            </div> */}
 
             <div>
                 <small>Ecommerce</small>
