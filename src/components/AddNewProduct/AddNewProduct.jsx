@@ -12,6 +12,8 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import Button from '@mui/material/Button';
+import jwt_decode from 'jwt-decode'
+import axios from 'axios'
 
 const style = {
     position: 'absolute',
@@ -27,7 +29,25 @@ const style = {
 
 
 const AddNewProduct = () => {
-
+    // const baseURL = 'https://api.boxin.ng/api/v1/store/category/?search='
+    const [categories, setCategories] = React.useState([])
+    const [storeDetails, setStoreDetails] = React.useState({
+        id: "",
+        store_domain: "",
+        store_name: "",
+        store_description: "",
+        store_shop_number: 0,
+        store_street_name: "",
+        store_city: "",
+        store_state: "",
+        store_postal_code: "",
+        store_escrow: "",
+        primary_store_color: "",
+        secondary_store_color: "",
+        next_pickup_date: "2022-02-21",
+        customer_pay_delivery_fee: true,
+        user: null
+    })
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -36,6 +56,49 @@ const AddNewProduct = () => {
         e.preventDefault();
         alert("This button is working")
     }
+
+    const getCategoriesOptions = (
+    categories.map(category => <MenuItem key={category.id} value={category.id}>{category.name}</MenuItem>)
+    )
+
+    React.useEffect(() => {
+        let token = JSON.parse(localStorage.getItem('token'))
+        let authorizationHeader = `Bearer ${token}`
+        // let history = useHistory()
+
+        // console.log(token)
+
+        const baseURL = 'https://api.boxin.ng/api/v1/store'
+
+        const getStoreDetails = async () => {
+            axios.get(`${baseURL}/get-store/`, {headers: {Authorization: authorizationHeader}})
+            .then(res => {
+                setStoreDetails(res.data.store_details)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+
+        const getCategories = async () => {
+            if (storeDetails.user != null) {
+                getStoreDetails()
+            }
+            
+            if (!categories.length) {
+                axios.get(`${baseURL}/category/?search=${storeDetails.id}`)
+                .then((res) => {
+                    setCategories(res.data.results)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
+            
+        }
+
+        getCategories()
+    },[storeDetails, categories])
 
     
     return ( 
@@ -84,9 +147,7 @@ const AddNewProduct = () => {
                         label="Age"
                         //   onChange={handleChange}
                         >
-                        <MenuItem value={10}>Ten</MenuItem>
-                        <MenuItem value={20}>Twenty</MenuItem>
-                        <MenuItem value={30}>Thirty</MenuItem>
+                        {getCategoriesOptions}
                         </Select>
                     </FormControl>
                     <AddBoxIcon 
@@ -135,6 +196,8 @@ const AddNewProduct = () => {
                         <TextField
                         required
                         fullWidth
+                        multiline
+                        rows={4}
                         id="description"
                         label="description"
                         />
