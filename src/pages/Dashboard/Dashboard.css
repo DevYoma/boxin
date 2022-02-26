@@ -1,22 +1,22 @@
 .dashboard{
     display: flex;
-    min-height: 100vh;
-    position: relative;
+    height: 100vh;
+    /* position: relative; */
+    /* border: 5px solid yellow; */
 }
 
 .dashboard__tab{
     /* flex: 0.15; */
     /* background: #091E42; */
     background: #12113d;
-    /* width: 180px; */
-    /* display: none; */
-    position: fixed;
-    top: 0;
-    left: 0 ;
+    display: flex;
+    height: 100vh;
 }
 
 .dashboard__main{
     /* flex: 0.85; */
     flex: 1;
-    padding-left: 150px;
+    /* padding-left: 150px; */
+    /* border: 1px solid red; */
+    overflow-y: scroll;
 }

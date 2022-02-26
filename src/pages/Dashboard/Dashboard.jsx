@@ -17,6 +17,8 @@ import Orders from '../../components/Orders/Orders'
 import AddNewProduct from '../../components/AddNewProduct/AddNewProduct';
 import Transactions from '../../components/Transactions/Transactions';
 import UserDashboard from '../../components/UserDashboard/UserDashboard'
+import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
 
 
 const Dashboard = () => {
@@ -42,9 +44,6 @@ const Dashboard = () => {
             history.go(1);
         });
     }, [])
-
-  
-
 
     return ( 
         <div className="dashboard">
@@ -76,39 +75,40 @@ const Dashboard = () => {
                             <Deliveries />
                         </Route>
                         
-                        <Route path='/app/batch'>
-                            <BatchCom />
-                        </Route>
-
-                        {/* topups path not working */}
-                        <Route path='/app/topup'>
-                            <TopUps />
-                        </Route>
-
-                        <Route path='/app/transfers'>
-                            <Transfers />
-                        </Route>
-
-                        <Route path='/app/request'>
-                            <Request />
-                        </Route>
 
                         <Route path='/app/products'>
                             <Product />
-                        </Route>
-
-                        <Route path='/app/orders'>
-                            <Orders />
                         </Route>
 
                         <Route path='/app/add-product'>
                             <AddNewProduct />
                         </Route>
 
-                        <Route path='/app/transactions'>
-                            <Transactions />
-                        </Route>
+                        {/* <Route path='/app/batch'>
+                            <BatchCom />
+                        </Route> */}
 
+                        {/* topups path not working */}
+                        {/* <Route path='/app/topup'>
+                            <TopUps />
+                        </Route> */}
+{/* 
+                        <Route path='/app/transfers'>
+                            <Transfers />
+                        </Route> */}
+
+                            {/* <Route path='/app/request'>
+                                <Request />
+                            </Route> */}
+
+                        {/* <Route path='/app/orders'>
+                            <Orders />
+                        </Route> */}
+
+                        {/* <Route path='/app/transactions'>
+                            <Transactions />
+                        </Route> */}
+                       
                     </Switch>
                     {/* </Router> */}
 

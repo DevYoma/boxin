@@ -95,7 +95,7 @@ export default function SignIn() {
         {/* <CssBaseline /> */}
         <div className="signUp">
           <h1>Sign In</h1>
-          <p>New user? <Link to={'/'} style={{ color: "red", textDecoration: "none" }}>Create an account</Link></p>
+          <p>New user? <Link to={'/'} style={{ color: "#4270b7", textDecoration: "none" }}>Create an account</Link></p>
 
           <form className="signUp__form">
             <div>

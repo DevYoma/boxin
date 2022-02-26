@@ -5,9 +5,24 @@ import { Link } from 'react-router-dom';
 import { useStateValue } from '../../context/StateProvider';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
+import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 const DashboardTab = () => {
+    const [toggled, setToggled] = useState(true)
     // let navigate = useNavigate()
     // const [{user}, dispatch] = useStateValue()
     const history = useHistory()
@@ -74,11 +89,6 @@ const DashboardTab = () => {
             name: "Dashboard", 
             link: '/dashboard'
         },
-        // {
-        //     id: 2,
-        //     name: "View my Store",
-        //     link: `https://${storeDetails.store_domain}.boxin.site`
-        // },
         {
             id: 2, 
             name: "Settings",
@@ -86,42 +96,7 @@ const DashboardTab = () => {
         }
     ]
 
-    const shippingTabs = [
-    //     {
-    //         id: 1,
-    //         name: "Deliveries", 
-    //         link: '/deliveries'
-    //     },
-        // {
-        //     id: 2,
-        //     name: "Batch",
-        //     link: '/batch'
-        // },
-    ]
-
-    const paymentTabs = [
-        // {
-        //     id: 1,
-        //     name: "Topups", 
-        //     link: '/topup'
-        // },
-        // {
-        //     id: 2,
-        //     name: "Transfers",
-        //     link: '/transfers'
-        // },
-        // {
-        //     id: 3,
-        //     name: "Requests",
-        //     link: '/request'
-        // },
-        // {
-        //     id: 4,
-        //     name: "Transactions",
-        //     link: '/transactions'
-        // }
-    ]
-
+ 
     const eCommerce = [
         {
             id: 1,
@@ -130,7 +105,7 @@ const DashboardTab = () => {
         },
         {
             id: 2,
-            name: "Orders",
+            name: "Deliveries",
             link: '/deliveries'
         },
         {
@@ -146,57 +121,107 @@ const DashboardTab = () => {
         </p>)
     )
 
-    // const shippingTabsMapping = (
-    //     shippingTabs.map(shippingItem => <p key={shippingItem.id}>
-    //         <Link className='dashboardTab__link' to={`/app${shippingItem.link}`}>{shippingItem.name}</Link>
-    //     </p>)
-    // )
-
-    // to={`${shippingItem.link}`
-
-    // const paymentTabsMapping = (
-    //     paymentTabs.map(paymentItem => <p key={paymentItem.id}>
-    //         <Link className='dashboardTab__link'  to={`/app${paymentItem.link}`}>{paymentItem.name}</Link>
-    //     </p>)
-    // )
-
     const eCommerceMapping = (
         eCommerce.map(eCommerceItem => <p key={eCommerceItem.id}>
             <Link className='dashboardTab__link'  to={`/app${eCommerceItem.link}`}>{eCommerceItem.name}</Link>
         </p>)
     )
+
+
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+      });
     
-    return ( 
-        <div className="dashboardTab">
-            <div>
-                {mainTabsMapping}
+      const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+    
+        setState({ ...state, [anchor]: open });
+      };
+    
+      const list = (anchor) => (
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+        >
+
+{/* const mainTabsMapping = (
+        mainTabs.map(mainItem => <p key={mainItem.id}>
+            <Link className='dashboardTab__link'  to={`/app${mainItem.link}`}>{mainItem.name}</Link>
+        </p>)
+    ) */}
+
+{/* <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon> */}
+          <List style={{background: "#12113d", color: "white", height: "100vh" }}>
+            {mainTabs.map((mainItem) => (
+                <ListItem button key={mainItem.id}>
+                <Link to={`/app${mainItem.link}`} className='dashboardTab__link'>
+                    <ListItemText primary={mainItem.name} />
+                </Link>
+              </ListItem>
+            ))}
+                
+            <ListItem>
                 <a key="3" className='dashboardTab__link'  href={`https://${storeDetails.store_domain}.boxin.site`} target="_blank">
-            <p className='dashboardTab__link'>View my store</p>
-        </a>
-            </div>
+                    <p className='dashboardTab__link'>View my store</p>
+                </a>
+            </ListItem>
 
-            {/* <div>
-                <small>Shipping</small>
-                {shippingTabsMapping}
-            </div> */}
+            {eCommerce.map((eCommerceItem) => (
+                <ListItem button key={eCommerceItem.id}>
+                
+                <Link to={`/app${eCommerceItem.link}`} className='dashboardTab__link'>
+                    <ListItemText primary={eCommerceItem.name} />
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      );
 
-            {/* <div>
-                <small>Payment</small>
-                {paymentTabsMapping}
-            </div> */}
+      const NavIcon = (
+        <IconButton
+        size="large"
+        edge="start"
+        color="inherit"
+        aria-label="open drawer"
+        sx={{ mr: 2 }}
+      >
+        <MenuIcon />
+      </IconButton>
+      )
+    
 
-            <div>
-                <small>Ecommerce</small>
-                {eCommerceMapping}
-            </div>
-
-            {/* <div className='dashboardTab__logout'> */}
-                <button onClick={() => alert("working")}>
-                    Logout
-                </button>
-            {/* </div> */}
-        </div>
+    return ( 
+        <div>
+        {['left'].map((anchor) => (
+          <React.Fragment key={anchor}>
+            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+            <Drawer
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+            >
+              {list(anchor)}
+            </Drawer>
+          </React.Fragment>
+        ))}
+      </div>
+  
      );
 }
  
 export default DashboardTab;
+
+
+   // toggled="false"
+            // breakPoint="md"
+            // className="dashboardTab"
