@@ -1,15 +1,16 @@
 .dashboardTab{
-    /* color: white; */
     /* background: red; */
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 3.5em 0;
-    justify-content: space-around;
-    /* text-align: center; */
-    padding-left: 1.5em;
+    /* padding-left: 20px; */
+    /* display: none; */
 }
 
+.dashboardTab > div,
+.dashboardTab > button{
+    padding-left: 15px;
+}
 
 .dashboardTab > div > small{
     font-size: 14px;
@@ -17,17 +18,25 @@
     font-weight: bold;
 }
 
-
-
 .dashboardTab__link,
 .dashboardTab__logout{
     text-decoration: none;
     color: white;
     font-weight: 500;
     font-size: 1.1rem;
+    /* margin-bottom: 30px; */
 }
 
 .dashboardTab__link:hover{
     background: red;
     /* width: 100%; */
+}
+/* 
+.dashboardTab__link{
+    background: green;
+} */
+
+
+::-webkit-scrollbar {
+    display: none;
 }

@@ -5,9 +5,12 @@ import { Link } from 'react-router-dom';
 import { useStateValue } from '../../context/StateProvider';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
+import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
 
 
 const DashboardTab = () => {
+    const [toggled, setToggled] = useState(true)
     // let navigate = useNavigate()
     // const [{user}, dispatch] = useStateValue()
     const history = useHistory()
@@ -74,11 +77,6 @@ const DashboardTab = () => {
             name: "Dashboard", 
             link: '/dashboard'
         },
-        // {
-        //     id: 2,
-        //     name: "View my Store",
-        //     link: `https://${storeDetails.store_domain}.boxin.site`
-        // },
         {
             id: 2, 
             name: "Settings",
@@ -86,42 +84,7 @@ const DashboardTab = () => {
         }
     ]
 
-    const shippingTabs = [
-    //     {
-    //         id: 1,
-    //         name: "Deliveries", 
-    //         link: '/deliveries'
-    //     },
-        // {
-        //     id: 2,
-        //     name: "Batch",
-        //     link: '/batch'
-        // },
-    ]
-
-    const paymentTabs = [
-        // {
-        //     id: 1,
-        //     name: "Topups", 
-        //     link: '/topup'
-        // },
-        // {
-        //     id: 2,
-        //     name: "Transfers",
-        //     link: '/transfers'
-        // },
-        // {
-        //     id: 3,
-        //     name: "Requests",
-        //     link: '/request'
-        // },
-        // {
-        //     id: 4,
-        //     name: "Transactions",
-        //     link: '/transactions'
-        // }
-    ]
-
+ 
     const eCommerce = [
         {
             id: 1,
@@ -146,56 +109,39 @@ const DashboardTab = () => {
         </p>)
     )
 
-    // const shippingTabsMapping = (
-    //     shippingTabs.map(shippingItem => <p key={shippingItem.id}>
-    //         <Link className='dashboardTab__link' to={`/app${shippingItem.link}`}>{shippingItem.name}</Link>
-    //     </p>)
-    // )
-
-    // to={`${shippingItem.link}`
-
-    // const paymentTabsMapping = (
-    //     paymentTabs.map(paymentItem => <p key={paymentItem.id}>
-    //         <Link className='dashboardTab__link'  to={`/app${paymentItem.link}`}>{paymentItem.name}</Link>
-    //     </p>)
-    // )
-
     const eCommerceMapping = (
         eCommerce.map(eCommerceItem => <p key={eCommerceItem.id}>
             <Link className='dashboardTab__link'  to={`/app${eCommerceItem.link}`}>{eCommerceItem.name}</Link>
         </p>)
     )
-    
+
     return ( 
-        <div className="dashboardTab">
-            <div>
-                {mainTabsMapping}
-                <a key="3" className='dashboardTab__link'  href={`https://${storeDetails.store_domain}.boxin.site`} target="_blank">
-            <p className='dashboardTab__link'>View my store</p>
-        </a>
-            </div>
+        <ProSidebar 
+            // this one makes sure the sidenav bar is closed when somewhere else is clicked
+            // collapsed
+            // toggled={false}
+            toggled="false"
+            breakPoint="md"
+            className="dashboardTab"
+        >
+            <SidebarContent>
+                <div>
+                    {mainTabsMapping}
+                    <a key="3" className='dashboardTab__link'  href={`https://${storeDetails.store_domain}.boxin.site`} target="_blank">
+                        <p className='dashboardTab__link'>View my store</p>
+                    </a>
+                </div>
 
-            {/* <div>
-                <small>Shipping</small>
-                {shippingTabsMapping}
-            </div> */}
+                <div>
+                    <small>Ecommerce</small>
+                    {eCommerceMapping}
+                </div>
 
-            {/* <div>
-                <small>Payment</small>
-                {paymentTabsMapping}
-            </div> */}
-
-            <div>
-                <small>Ecommerce</small>
-                {eCommerceMapping}
-            </div>
-
-            {/* <div className='dashboardTab__logout'> */}
                 <button onClick={() => alert("working")}>
                     Logout
                 </button>
-            {/* </div> */}
-        </div>
+            </SidebarContent>
+        </ProSidebar>
      );
 }
  

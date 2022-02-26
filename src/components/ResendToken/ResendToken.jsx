@@ -64,7 +64,7 @@ const ResendToken = () => {
 
     return ( 
         <div className="resendToken">
-            <h1>I am the send token component</h1>
+            <h2>A new token has been sent to your email address</h2>
 
             <form>
                 <TextField
@@ -77,9 +77,14 @@ const ResendToken = () => {
                     value={emailResend.email}
                     onChange={handleChange}
                     />
-                </form>
+                </form> <br />
 
-                <button onClick={handleResendButtonClick}>Resend Token</button>
+                <button 
+                    onClick={handleResendButtonClick}
+                    className='resendToken__button'
+                >
+                    Resend Token
+                </button>
         </div>
      );
 }

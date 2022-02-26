@@ -52,7 +52,7 @@ const Verify = () => {
 
     return ( 
         <div className='verifyComponent'>
-            <h1>A token has been sent to your email</h1>
+            <h2>A token has been sent to your email</h2>
 
             <form onSubmit={handleSubmit}>
                 <TextField

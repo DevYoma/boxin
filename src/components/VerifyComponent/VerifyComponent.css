@@ -8,6 +8,7 @@
     /* align-items: center; */
     min-height: 100vh;
     /* background: red; */
+    padding: 0 30px;
 }
 /* 
 .verifyComponent > button {
