@@ -7,6 +7,18 @@ import { useHistory } from 'react-router-dom';
 import axios from 'axios'
 import { ProSidebar, SidebarHeader, SidebarFooter, SidebarContent } from 'react-pro-sidebar';
 import 'react-pro-sidebar/dist/css/styles.css';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 const DashboardTab = () => {
@@ -93,7 +105,7 @@ const DashboardTab = () => {
         },
         {
             id: 2,
-            name: "Orders",
+            name: "Deliveries",
             link: '/deliveries'
         },
         {
@@ -115,34 +127,101 @@ const DashboardTab = () => {
         </p>)
     )
 
-    return ( 
-        <ProSidebar 
-            // this one makes sure the sidenav bar is closed when somewhere else is clicked
-            // collapsed
-            // toggled={false}
-            toggled="false"
-            breakPoint="md"
-            className="dashboardTab"
+
+    const [state, setState] = React.useState({
+        top: false,
+        left: false,
+        bottom: false,
+        right: false,
+      });
+    
+      const toggleDrawer = (anchor, open) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+    
+        setState({ ...state, [anchor]: open });
+      };
+    
+      const list = (anchor) => (
+        <Box
+          sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
         >
-            <SidebarContent>
-                <div>
-                    {mainTabsMapping}
-                    <a key="3" className='dashboardTab__link'  href={`https://${storeDetails.store_domain}.boxin.site`} target="_blank">
-                        <p className='dashboardTab__link'>View my store</p>
-                    </a>
-                </div>
 
-                <div>
-                    <small>Ecommerce</small>
-                    {eCommerceMapping}
-                </div>
+{/* const mainTabsMapping = (
+        mainTabs.map(mainItem => <p key={mainItem.id}>
+            <Link className='dashboardTab__link'  to={`/app${mainItem.link}`}>{mainItem.name}</Link>
+        </p>)
+    ) */}
 
-                <button onClick={() => alert("working")}>
-                    Logout
-                </button>
-            </SidebarContent>
-        </ProSidebar>
+{/* <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon> */}
+          <List style={{background: "#12113d", color: "white", height: "100vh" }}>
+            {mainTabs.map((mainItem) => (
+                <ListItem button key={mainItem.id}>
+                <Link to={`/app${mainItem.link}`} className='dashboardTab__link'>
+                    <ListItemText primary={mainItem.name} />
+                </Link>
+              </ListItem>
+            ))}
+                
+            <ListItem>
+                <a key="3" className='dashboardTab__link'  href={`https://${storeDetails.store_domain}.boxin.site`} target="_blank">
+                    <p className='dashboardTab__link'>View my store</p>
+                </a>
+            </ListItem>
+
+            {eCommerce.map((eCommerceItem) => (
+                <ListItem button key={eCommerceItem.id}>
+                
+                <Link to={`/app${eCommerceItem.link}`} className='dashboardTab__link'>
+                    <ListItemText primary={eCommerceItem.name} />
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      );
+
+      const NavIcon = (
+        <IconButton
+        size="large"
+        edge="start"
+        color="inherit"
+        aria-label="open drawer"
+        sx={{ mr: 2 }}
+      >
+        <MenuIcon />
+      </IconButton>
+      )
+    
+
+    return ( 
+        <div>
+        {['left'].map((anchor) => (
+          <React.Fragment key={anchor}>
+            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+            <Drawer
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+            >
+              {list(anchor)}
+            </Drawer>
+          </React.Fragment>
+        ))}
+      </div>
+  
      );
 }
  
 export default DashboardTab;
+
+
+   // toggled="false"
+            // breakPoint="md"
+            // className="dashboardTab"

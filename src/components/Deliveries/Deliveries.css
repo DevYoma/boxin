@@ -38,6 +38,11 @@
     /* border: 1px solid red; */
 }
 
+@media screen and (max-width:500px) {
+    .deliveries__main{
+        display: none;
+    }
+}
 
 .deliveries__buttons{
     display: flex;

@@ -9,6 +9,16 @@
     position: relative;
 }
 
+.products__main{
+    /* border: 1px solid red; */
+}
+
+@media screen and (max-width:500px) {
+    .products__main{
+        display: none;
+    }
+}
+
 .products__heading > .products__button{
     position: absolute;
     right: 0px;
