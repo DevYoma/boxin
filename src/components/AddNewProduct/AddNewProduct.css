@@ -1,11 +1,15 @@
-.addNewProduct{
-    height: 100vh;
-    overflow-y: scroll;
-    padding: 40px 40px 0px;
-    /* border: 1px solid red; */
+.addNewProduct {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 40px 40px 0px;
+  /* border: 1px solid red; */
 }
 
-.flex{
-    display: flex;
-    justify-content: space-between;
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-input {
+  display: none;
 }

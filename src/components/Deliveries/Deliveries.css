@@ -1,95 +1,87 @@
-.deliveries{
-    height: 100vh;
-    /* background: red; */
-    overflow-y: scroll;
-    padding: 40px 40px 0px;
+.deliveries {
+  height: 100vh;
+  /* background: red; */
+  overflow-y: scroll;
+  padding: 40px 40px 0px;
 }
 
-.deliveries__heading > h1{
-
+.btn-details {
+  text-transform: none;
 }
 
-.deliveries__subHeading{
-    display: flex;
-    /* background: red; */
-    margin-bottom: 30px;
+.deliveries__subHeading {
+  display: flex;
+  /* background: red; */
+  margin-bottom: 30px;
 }
 
-.deliveries__text{
-    margin-right: auto;
+.deliveries__text {
+  margin-right: auto;
 }
 
-.deliveries__text > p{
-    color: #9297B4;
-    font-size: 14px;
-    font-weight: 600;
+.deliveries__text > p {
+  color: #9297b4;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.deliveries__requestButton{
-    background: #091E42;
-    color: white;
-    border: none;
-    padding: 1em;
-    font-weight: 600;
-    cursor: pointer;
+.deliveries__requestButton {
+  background: #091e42;
+  color: white;
+  border: none;
+  padding: 1em;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.deliveries__main{
-    /* border: 1px solid red; */
+@media screen and (max-width: 500px) {
+  .deliveries__main {
+    display: none;
+  }
 }
 
-@media screen and (max-width:500px) {
-    .deliveries__main{
-        display: none;
-    }
+.deliveries__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.deliveries__buttons{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
+p#special {
+  margin-left: auto;
+  color: #9297b4;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-p#special{
-    margin-left: auto;
-    color: #9297B4;
-    font-size: 14px;
-    font-weight: 600;
+.row {
+  display: flex;
+  align-items: center;
 }
 
-.row{
-    display: flex;
-    align-items: center;
+.deliveries__conditions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
 }
 
-.deliveries__conditions{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
+.deliveries__filterButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.deliveries__filterButtons{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.deliveries__filterButton {
+  /* background: red; */
+  padding: 5px;
+  border: none;
+  height: 40px;
+  border-radius: 3px;
 }
 
-.deliveries__filterButton{
-    /* background: red; */
-    padding: 5px;
-    border: none;
-    height: 40px;
-    border-radius: 3px;
+#filter {
+  color: white;
+  background: red;
+  cursor: not-allowed;
 }
-
-#filter{
-    color: white;
-    background: red;
-    cursor: not-allowed;
-}
-
-
-
-
