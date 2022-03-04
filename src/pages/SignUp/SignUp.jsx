@@ -1,88 +1,88 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react'
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import * as React from "react";
+import { useState, useEffect } from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 // import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link, useHistory } from 'react-router-dom';
-import './SignUp.css';
-import axios from 'axios'
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import LoadingButton from "@mui/lab/LoadingButton";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Link, useHistory } from "react-router-dom";
+import "./SignUp.css";
+import axios from "axios";
 
 const theme = createTheme();
 
 export default function SignUp() {
   const [userDetails, setUserDetails] = useState({
-    // country: "", 
+    // country: "",
     email: "",
     lastname: "",
     firstname: "",
     phone: "",
     password: "",
-  })
+  });
 
   const history = useHistory();
 
   const handleClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     // history.push('/signin')
-   
+
     // if(userDetails.password !== userDetails.verifypassword){
     //   alert("The Passwords do not match")
     //   return
     // }
-    
+
     console.log(userDetails);
 
     const postToDB = async () => {
-      axios.post(`${baseURL}/auth/users/`, userDetails)
-      // .then(res => res.json())
-      .then(res => {
-        console.log(res.data)
-        history.push('/verifytoken')
-      })
-      .catch(err => {
-        console.log(err)
-        alert('Please fill all required fields')
-      })
+      axios
+        .post(`${baseURL}/auth/users/`, userDetails)
+        // .then(res => res.json())
+        .then((res) => {
+          console.log(res.data);
+          history.push("/verifytoken");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("Please fill all required fields");
+        });
+    };
 
-    }
+    postToDB();
 
-    postToDB()
-
-    
     // fetch('​/api​/v1​/auth​/users​/').
 
     setUserDetails({
-      // country: "", 
+      // country: "",
       email: "",
       firstname: "",
       lastname: "",
       phone: "",
       password: "",
-    })
+    });
 
     // history.push('/verifytoken')
-  }
+  };
 
-  const handleChange = event => {
-    setUserDetails(prevUserDetails => {
+  const handleChange = (event) => {
+    setUserDetails((prevUserDetails) => {
       return {
         ...prevUserDetails,
-        [event.target.name]: event.target.value
-      }
-    })
-  }
+        [event.target.name]: event.target.value,
+      };
+    });
+  };
 
-  const baseURL = "https://api.boxin.ng/api/v1"
+  const baseURL = "https://api.boxin.ng/api/v1";
 
   useEffect(() => {
     // const postToDB = async () => {
@@ -90,15 +90,13 @@ export default function SignUp() {
     //   // .then(res => res.json())
     //   .then(res => {console.log(res.data)})
     //   .catch(err => {console.log(err)})
-
     // }
-
     // postToDB()
-  }, [userDetails])
+  }, [userDetails]);
 
   const handleResendToken = () => {
-    history.push('/resendtoken')
-  }
+    history.push("/resendtoken");
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -106,7 +104,15 @@ export default function SignUp() {
         {/* <CssBaseline /> */}
         <div className="signUp">
           <h1>Sign Up</h1>
-          <p>Already have an account? <Link to={'/signin'} style={{ color: "#4270b7", textDecoration: "none" }}>Sign In</Link></p>
+          <p>
+            Already have an account?{" "}
+            <Link
+              to={"/signin"}
+              style={{ color: "#4270b7", textDecoration: "none" }}
+            >
+              Sign In
+            </Link>
+          </p>
 
           <form className="signUp__form">
             {/* <div>
@@ -132,8 +138,6 @@ export default function SignUp() {
                   // autoFocus
                   value={userDetails.firstname}
                   onChange={handleChange}
-
-
                 />
               </div>
 
@@ -148,13 +152,10 @@ export default function SignUp() {
                   // autoFocus
                   value={userDetails.lastname}
                   onChange={handleChange}
-
-
                 />
               </div>
             </div>
-            <div className='row'>
-
+            <div className="row">
               <div>
                 <TextField
                   // autoComplete="given-name"
@@ -165,15 +166,13 @@ export default function SignUp() {
                   label="Email Address"
                   // autoFocus
                   value={userDetails.email}
-                onChange={handleChange}
-
-
+                  onChange={handleChange}
                 />
               </div>
 
               <div>
                 <TextField
-                  className='col'
+                  className="col"
                   // autoComplete="given-name"
                   name="phone"
                   required
@@ -182,12 +181,9 @@ export default function SignUp() {
                   label="Phone Number"
                   // autoFocus
                   value={userDetails.phone}
-                onChange={handleChange}
-
+                  onChange={handleChange}
                 />
-
               </div>
-
             </div>
 
             <div className="row">
@@ -202,7 +198,6 @@ export default function SignUp() {
                 value={userDetails.password}
                 onChange={handleChange}
                 type="password"
-
               />
 
               {/* <TextField
@@ -218,26 +213,30 @@ export default function SignUp() {
                 type="password"
 
               /> */}
-
             </div>
 
             <p className="form__terms">
-              By clicking create account, I represent, I have  read, understood, and agreed to the sendbox's <span className="red">Privacy Policy</span> and <span className="red">Terms of Service</span>
+              By clicking create account, I represent, I have read, understood,
+              and agreed to the sendbox's{" "}
+              <span className="red">Privacy Policy</span> and{" "}
+              <span className="red">Terms of Service</span>
             </p>
-            <button onClick={handleClick} className='form__button'>
+            <button onClick={handleClick} className="form__button">
               Create Account
             </button>
-            <button 
+            <LoadingButton
               className="form__resend__token"
               onClick={handleResendToken}
+              variant="outlined"
             >
-                Resend Token ?
-              </button>
-
+              Resend Token ?
+            </LoadingButton>
           </form>
         </div>
       </Container>
     </ThemeProvider>
   );
 }
-{/* <Copyright sx={{ mt: 5 }} /> */}
+{
+  /* <Copyright sx={{ mt: 5 }} /> */
+}
