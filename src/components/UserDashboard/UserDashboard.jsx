@@ -69,6 +69,8 @@ export const data = {
 };
 
 const UserDashboard = () => {
+  const token = JSON.parse(localStorage.getItem("token"));
+
   const [storeDetails, setStoreDetails] = useState({
     id: "",
     store_domain: "",
@@ -94,8 +96,9 @@ const UserDashboard = () => {
   });
 
   useEffect(() => {
-    let token = JSON.parse(localStorage.getItem("token"));
     let authorizationHeader = `Bearer ${token}`;
+    let decoded = jwt_decode(token);
+
     // let history = useHistory()
 
     // console.log(token)
@@ -117,7 +120,6 @@ const UserDashboard = () => {
     };
 
     const decodeToken = () => {
-      let decoded = jwt_decode(token);
       setUserDetails({
         firstname: decoded.firstname,
         lastname: decoded.lastname,
@@ -140,6 +142,18 @@ const UserDashboard = () => {
     //         history.push('/signin')
     //     }
   }, [storeDetails, userDetails]);
+
+  const copyText = async () => {
+    console.warn(window.location.origin);
+    try {
+      let decoded = jwt_decode(token);
+      let ref_link = `${window.location.origin}?uid=${decoded.user_id}`;
+      await navigator.clipboard.writeText(ref_link);
+      alert("Referral link copied to clipboard!");
+    } catch (error) {
+      console.warn("copyText", String(error));
+    }
+  };
 
   const greeting = () => {
     const date = new Date();
@@ -169,7 +183,12 @@ const UserDashboard = () => {
           background="white"
           color="black"
         />
-        <UserDashboardButton name="REQUEST DELIVERY" background="#091E42" />
+        <UserDashboardButton
+          name="COPY REFERRAL LINK"
+          onClick={copyText}
+          background="white"
+          color="black"
+        />
       </div>
 
       <div className="userDashboard__details">
