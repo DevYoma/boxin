@@ -211,6 +211,9 @@ const Products = () => {
               onChange={handleChange}
               className="width"
             >
+              <MenuItem key={"default"} value={""}>
+                {"None"}
+              </MenuItem>
               {categories.map((category) => (
                 <MenuItem key={category.id} value={category.id}>
                   {category.name}

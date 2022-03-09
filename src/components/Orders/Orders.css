@@ -1,79 +1,71 @@
-.orders{
-    height: 100vh;
-    overflow-y: scroll;
-    padding: 40px 40px 0px;
+.orders {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 40px 40px 0px;
 }
 
-
-.orders__subHeading{
-    display: flex;
-    margin-bottom: 30px;
+.orders__subHeading {
+  display: flex;
+  margin-bottom: 30px;
 }
 
-.orders__text{
-    margin-right: auto;
+.orders__text {
+  margin-right: auto;
 }
 
-.orders__text > p{
-    color: #9297B4;
-    font-size: 14px;
-    font-weight: 600;
+.orders__text > p {
+  color: #9297b4;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.orders__requestButton{
-    background: #091E42;
-    color: white;
-    border: none;
-    padding: 1em;
-    font-weight: 600;
-    cursor: pointer;
+.orders__requestButton {
+  background: #091e42;
+  color: white;
+  border: none;
+  padding: 1em;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.orders__buttons{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
+.orders__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-p#special{
-    margin-left: auto;
+p#special {
+  margin-left: auto;
 }
 
-
-.row{
-    display: flex;
-    align-items: center;
+.row {
+  display: flex;
+  align-items: center;
 }
 
-
-.orders__conditions{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
+.orders__conditions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
 }
 
-.orders__filterButtons{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.orders__filterButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.orders__filterButton{
-    /* background: red; */
-    padding: 5px;
-    border: none;
-    height: 40px;
-    border-radius: 3px;
+.orders__filterButton {
+  padding: 5px;
+  border: none;
+  height: 40px;
+  border-radius: 3px;
 }
 
-#filter{
-    color: white;
-    background: red;
-    cursor: not-allowed;
+#filter {
+  color: white;
+  background: red;
+  cursor: not-allowed;
 }
-
-
-
-

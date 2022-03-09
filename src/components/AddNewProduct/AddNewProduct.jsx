@@ -43,6 +43,8 @@ const AddNewProduct = () => {
   const [pagestate, setPageState] = React.useState({
     addingnewproductcat: false,
   });
+  const [creatingproduct, setCreatingProduct] = React.useState(false);
+  const [productimage, setProductImage] = React.useState(null);
   const [storeDetails, setStoreDetails] = React.useState({
     id: "",
     store_domain: "",
@@ -68,7 +70,6 @@ const AddNewProduct = () => {
   const productweightinputref = React.useRef();
   const productcatinputref = React.useRef();
   const productnameinputref = React.useRef();
-  const productimageinputref = React.useRef();
   const newproductcatinputref = React.useRef();
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -103,24 +104,40 @@ const AddNewProduct = () => {
       });
   };
 
+  const uploadProductImage = async (id, image) => {
+    try {
+      let formdata = new FormData();
+      formdata.append("main_image", image, image.name);
+      const response = await axios.patch(
+        `${baseURL}/products/${id}/`,
+        formdata,
+        {
+          ...options,
+          headers: {
+            ...options.headers,
+            "content-type": "multipart/form-data",
+          },
+        }
+      );
+      productnameinputref.current.value = "";
+      productdescinputref.current.value = "";
+      productcolorinputref.current.value = "";
+      productpriceinputref.current.value = "";
+      productmaterialinputref.current.value = "";
+      productweightinputref.current.value = "";
+      productcatinputref.current.value = "";
+      setCreatingProduct(false);
+      setProductImage({});
+    } catch (error) {
+      console.warn("uploadProductImage err", String(error));
+      setCreatingProduct(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      let formdata = new FormData();
-      formdata.append("category_name", productcatinputref.current.value);
-      formdata.append("name", productnameinputref.current.value);
-      formdata.append("description", productdescinputref.current.value);
-      formdata.append("price", productpriceinputref.current.value);
-      /* formdata.append(
-        "product_info",
-        JSON.stringify({
-          sku: "",
-          color: productcolorinputref.current.value,
-          material: productmaterialinputref.current.value,
-          quantity: 0,
-        })
-      );*/
-      formdata.append("main_image", "");
+
       let data = {
         productName: productnameinputref.current.value,
         productDesc: productdescinputref.current.value,
@@ -128,18 +145,32 @@ const AddNewProduct = () => {
         productPrice: productpriceinputref.current.value,
         productMaterial: productmaterialinputref.current.value,
         productWeight: productweightinputref.current.value,
-        productImage: productimageinputref.current.value,
         productcategory: productcatinputref.current.value,
       };
-      const response = await axios.post(`${baseURL}/products/`, formdata, {
-        ...options,
-        headers: {
-          ...options.headers,
-          "Content-Type": "multipart/form-data; ",
+      //console.warn("main_image", productimage);
+      setCreatingProduct(true);
+      const response = await axios.post(
+        `${baseURL}/products/`,
+        {
+          category_name: productcatinputref.current.value,
+          name: productnameinputref.current.value,
+          description: productdescinputref.current.value,
+          price: productpriceinputref.current.value,
+          product_info: {
+            sku: "",
+            color: productcolorinputref.current.value,
+            material: productmaterialinputref.current.value,
+            quantity: 0,
+          },
+          main_image: null,
         },
-      });
+        options
+      );
       console.warn(`handleSubmit`, data);
+      uploadProductImage(response?.data?.id, productimage);
+      // console.warn(`handleSubmit`, data);
     } catch (err) {
+      setCreatingProduct(false);
       console.warn(`handleSubmit err`, String(err));
     }
   };
@@ -163,7 +194,7 @@ const AddNewProduct = () => {
       );
       newproductcatinputref.current.value = "";
       getCategories();
-      console.log("response", response.data);
+      console.log("addProductCat response", response.data);
     } catch (err) {
       console.error(
         "--------------------------------response  lad error-------------------------------------------------",
@@ -306,7 +337,7 @@ const AddNewProduct = () => {
               <input
                 type="file"
                 required
-                ref={productimageinputref}
+                onChange={(e) => setProductImage(e.target.files[0])}
                 id="demo-image-upload"
                 className={"image-input"}
                 accept="image/png, image/jpg, image/jpeg"
@@ -315,13 +346,16 @@ const AddNewProduct = () => {
             </InputLabel>
           </div>
 
-          <Button
+          <LoadingButton
             type="submit"
+            disabled={creatingproduct}
+            loading={creatingproduct}
             variant="contained"
             style={{ width: "300px", margin: "0 auto" }}
           >
             Submit
-          </Button>
+          </LoadingButton>
+          <br />
         </form>
       </Container>
     </React.Fragment>

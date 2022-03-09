@@ -1,74 +1,42 @@
-.dashboardTab{
-    /* background: red; */
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    /* padding-left: 20px; */
-    /* display: none; */
+.dashboardTab {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 800px) {
-    .dashboardTab{
-        background: red;
-        display: none;
-    }
+  .dashboardTab {
+    background: red;
+    display: none;
+  }
 }
 
 .dashboardTab > div,
-.dashboardTab > button{
-    padding-left: 15px;
+.dashboardTab > button {
+  padding-left: 15px;
 }
 
-.dashboardTab > div > small{
-    font-size: 14px;
-    color: gray;
-    font-weight: bold;
+.dashboardTab > div > small {
+  font-size: 14px;
+  color: gray;
+  font-weight: bold;
 }
 
 .dashboardTab__link,
-.dashboardTab__logout{
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    font-size: 1.1rem;
-    /* margin-bottom: 30px; */
+.dashboardTab__logout {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 1.1rem;
 }
 
-.dashboardTab__link:hover{
-    background: #9291c2;
-    padding: 3px;
-    border-radius: 10px;
-    transition: 0.5s ease-out;
-    /* width: 100%; */
+.dashboardTab__link:hover {
+  background: #9291c2;
+  padding: 3px;
+  border-radius: 10px;
+  transition: 0.5s ease-out;
 }
-/* 
-.dashboardTab__link{
-    background: green;
-} */
-
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
-
-/* <div 
-                
->
-    <div>
-        <div>
-            {mainTabsMapping}
-            <a key="3" className='dashboardTab__link'  href={`https://${storeDetails.store_domain}.boxin.site`} target="_blank">
-                <p className='dashboardTab__link'>View my store</p>
-            </a>
-        </div>
-
-        <div>
-            <small>Ecommerce</small>
-            {eCommerceMapping}
-        </div>
-
-        <button onClick={() => alert("working")}>
-            Logout
-        </button>
-    </div>
-</div> */

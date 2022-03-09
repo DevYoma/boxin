@@ -4,6 +4,9 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 // import Link from '@mui/material/Link';
@@ -12,6 +15,8 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Link, useHistory } from "react-router-dom";
@@ -21,6 +26,7 @@ import axios from "axios";
 const theme = createTheme();
 
 export default function SignUp() {
+  const baseURL = "https://api.boxin.ng/api/v1";
   const [userDetails, setUserDetails] = useState({
     // country: "",
     email: "",
@@ -30,47 +36,32 @@ export default function SignUp() {
     password: "",
   });
 
+  const [showpass, setShowPass] = React.useState(false);
+
   const history = useHistory();
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    // history.push('/signin')
-
-    // if(userDetails.password !== userDetails.verifypassword){
-    //   alert("The Passwords do not match")
-    //   return
-    // }
-
-    console.log(userDetails);
-
-    const postToDB = async () => {
-      axios
-        .post(`${baseURL}/auth/users/`, userDetails)
-        // .then(res => res.json())
-        .then((res) => {
-          console.log(res.data);
-          history.push("/verifytoken");
-        })
-        .catch((err) => {
-          console.log(err);
-          alert("Please fill all required fields");
-        });
-    };
-
-    postToDB();
-
-    // fetch('​/api​/v1​/auth​/users​/').
-
-    setUserDetails({
-      // country: "",
-      email: "",
-      firstname: "",
-      lastname: "",
-      phone: "",
-      password: "",
-    });
-
-    // history.push('/verifytoken')
+  const handleClick = async (e) => {
+    try {
+      e.preventDefault();
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const params = Object.fromEntries(urlSearchParams.entries());
+      const response = await axios.post(`${baseURL}/auth/users/`, {
+        ...userDetails,
+        referred_by: params?.uid,
+      });
+      history.push("/verifytoken");
+      setUserDetails({
+        // country: "",
+        email: "",
+        firstname: "",
+        lastname: "",
+        phone: "",
+        password: "",
+      });
+      console.warn("signup action", response.data);
+    } catch (error) {
+      alert("Failed to sign up, please check your input and try again");
+    }
   };
 
   const handleChange = (event) => {
@@ -82,17 +73,13 @@ export default function SignUp() {
     });
   };
 
-  const baseURL = "https://api.boxin.ng/api/v1";
+  const handleClickShowPassword = () => {
+    setShowPass(!showpass);
+  };
 
-  useEffect(() => {
-    // const postToDB = async () => {
-    //   axios.post(`${baseURL}/auth/users/`, userDetails)
-    //   // .then(res => res.json())
-    //   .then(res => {console.log(res.data)})
-    //   .catch(err => {console.log(err)})
-    // }
-    // postToDB()
-  }, [userDetails]);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   const handleResendToken = () => {
     history.push("/resendtoken");
@@ -187,17 +174,30 @@ export default function SignUp() {
             </div>
 
             <div className="row">
-              <TextField
+              <OutlinedInput
                 // autoComplete="given-name"
                 name="password"
+                placeholder="Password"
                 required
                 fullWidth
                 id="password"
-                label="Password"
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      edge="end"
+                    >
+                      {showpass ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
                 // autoFocus
                 value={userDetails.password}
                 onChange={handleChange}
-                type="password"
+                type={showpass ? "text" : "password"}
+                //label="Password"
               />
 
               {/* <TextField
