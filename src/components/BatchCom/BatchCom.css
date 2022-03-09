@@ -1,78 +1,71 @@
-.batch{
-    height: 100vh;
-    overflow-y: scroll;
-    padding: 40px 40px 0px;
+.batch {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 40px 40px 0px;
 }
 
-
-.batch__subHeading{
-    display: flex;
-    margin-bottom: 30px;
+.batch__subHeading {
+  display: flex;
+  margin-bottom: 30px;
 }
 
-.batch__text{
-    margin-right: auto;
+.batch__text {
+  margin-right: auto;
 }
 
-.batch__buttons{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
+.batch__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-p#special{
-    margin-left: auto;
+p#special {
+  margin-left: auto;
 }
 
-.batch__text > p{
-    color: #9297B4;
-    font-size: 14px;
-    font-weight: 600;
+.batch__text > p {
+  color: #9297b4;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.batch__requestButton{
-    background: #091E42;
-    color: white;
-    border: none;
-    padding: 1em;
-    font-weight: 600;
-    cursor: pointer;
+.batch__requestButton {
+  background: #091e42;
+  color: white;
+  border: none;
+  padding: 1em;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.row{
-    display: flex;
-    align-items: center;
+.row {
+  display: flex;
+  align-items: center;
 }
 
-
-.batch__conditions{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
+.batch__conditions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
 }
 
-.batch__filterButtons{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.batch__filterButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.batch__filterButton{
-    /* background: red; */
-    padding: 5px;
-    border: none;
-    height: 40px;
-    border-radius: 3px;
+.batch__filterButton {
+  padding: 5px;
+  border: none;
+  height: 40px;
+  border-radius: 3px;
 }
 
-#filter{
-    color: white;
-    background: red;
-    cursor: not-allowed;
+#filter {
+  color: white;
+  background: red;
+  cursor: not-allowed;
 }
-
-
-
-

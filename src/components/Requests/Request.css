@@ -1,79 +1,71 @@
-.request{
-    height: 100vh;
-    overflow-y: scroll;
-    padding: 40px 40px 0px;
+.request {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 40px 40px 0px;
 }
 
-
-.request__subHeading{
-    display: flex;
-    margin-bottom: 30px;
+.request__subHeading {
+  display: flex;
+  margin-bottom: 30px;
 }
 
-.request__text{
-    margin-right: auto;
+.request__text {
+  margin-right: auto;
 }
 
-.request__text > p{
-    color: #9297B4;
-    font-size: 14px;
-    font-weight: 600;
+.request__text > p {
+  color: #9297b4;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.request__requestButton{
-    background: #091E42;
-    color: white;
-    border: none;
-    padding: 1em;
-    font-weight: 600;
-    cursor: pointer;
+.request__requestButton {
+  background: #091e42;
+  color: white;
+  border: none;
+  padding: 1em;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.request__buttons{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
+.request__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-p#special{
-    margin-left: auto;
+p#special {
+  margin-left: auto;
 }
 
-
-.row{
-    display: flex;
-    align-items: center;
+.row {
+  display: flex;
+  align-items: center;
 }
 
-
-.request__conditions{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
+.request__conditions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
 }
 
-.request__filterButtons{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.request__filterButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.request__filterButton{
-    /* background: red; */
-    padding: 5px;
-    border: none;
-    height: 40px;
-    border-radius: 3px;
+.request__filterButton {
+  padding: 5px;
+  border: none;
+  height: 40px;
+  border-radius: 3px;
 }
 
-#filter{
-    color: white;
-    background: red;
-    cursor: not-allowed;
+#filter {
+  color: white;
+  background: red;
+  cursor: not-allowed;
 }
-
-
-
-

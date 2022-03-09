@@ -1,22 +1,15 @@
-.dashboard{
-    display: flex;
-    height: 100vh;
-    /* position: relative; */
-    /* border: 5px solid yellow; */
+.dashboard {
+  display: flex;
+  height: 100vh;
 }
 
-.dashboard__tab{
-    /* flex: 0.15; */
-    /* background: #091E42; */
-    background: #12113d;
-    display: flex;
-    height: 100vh;
+.dashboard__tab {
+  background: #12113d;
+  display: flex;
+  height: 100vh;
 }
 
-.dashboard__main{
-    /* flex: 0.85; */
-    flex: 1;
-    /* padding-left: 150px; */
-    /* border: 1px solid red; */
-    overflow-y: scroll;
+.dashboard__main {
+  flex: 1;
+  overflow-y: scroll;
 }

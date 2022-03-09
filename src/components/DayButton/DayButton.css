@@ -1,14 +1,9 @@
-.day__button{
-    /* background: red; */
-    border: none;
-    padding: 1em ;
-    font-weight: 700;
-    cursor: pointer;
-    background: white;
-    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-    border: 1px solid rgba(0,0,0,0.1);
+.day__button {
+  border: none;
+  padding: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  background: white;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
-
-/* .day__button:nth-child(2n){
-    background: green;
-} */

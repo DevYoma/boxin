@@ -1,12 +1,11 @@
-.nav{
-    max-width: 1440px;
-    width: 100% ;
-    margin: 0 auto !important;
+.nav {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto !important;
 }
 
-.nav__button{
-    /* border: 1px solid red !important; */
-    border: none;
-    background: black !important;
-    color: white !important;
+.nav__button {
+  border: none;
+  background: black !important;
+  color: white !important;
 }

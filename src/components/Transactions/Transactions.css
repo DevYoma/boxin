@@ -1,81 +1,75 @@
-.transactions{
-    height: 100vh;
-    overflow-y: scroll;
-    padding: 40px 40px 0px;
+.transactions {
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 40px 40px 0px;
 }
 
-
-.transactions__subHeading{
-    display: flex;
-    margin-bottom: 30px;
+.transactions__subHeading {
+  display: flex;
+  margin-bottom: 30px;
 }
 
-.transactions__text{
-    margin-right: auto;
+.transactions__text {
+  margin-right: auto;
 }
 
-.transactions__text > p{
-    color: #9297B4;
-    font-size: 14px;
-    font-weight: 600;
+.transactions__text > p {
+  color: #9297b4;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.transactions__requestButton{
-    background: #091E42;
-    color: white;
-    border: none;
-    padding: 1em;
-    font-weight: 600;
-    cursor: pointer;
+.transactions__requestButton {
+  background: #091e42;
+  color: white;
+  border: none;
+  padding: 1em;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.transactions__buttons{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 10px;
+.transactions__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-p#special{
-    margin-left: auto;
+p#special {
+  margin-left: auto;
 }
 
-
-.row{
-    display: flex;
-    align-items: center;
+.row {
+  display: flex;
+  align-items: center;
 }
 
-
-.transactions__conditions{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
+.transactions__conditions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
 }
 
-.transactions__filterButtons{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.transactions__filterButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.transactions__filterButton{
-    /* background: red; */
-    padding: 5px;
-    border: none;
-    height: 40px;
-    border-radius: 3px;
+.transactions__filterButton {
+  padding: 5px;
+  border: none;
+  height: 40px;
+  border-radius: 3px;
 }
 
-#filter{
-    color: white;
-    background: red;
-    cursor: not-allowed;
+#filter {
+  color: white;
+  background: red;
+  cursor: not-allowed;
 }
 
-.transactions__table{
-    /* border: 1px solid red; */
-    /* height: 5vh; */
-    margin-top: 35px;
+.transactions__table {
+  margin-top: 35px;
 }

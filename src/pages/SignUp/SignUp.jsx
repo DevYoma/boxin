@@ -72,6 +72,7 @@ export default function SignUp() {
       };
     });
   };
+
   const handleClickShowPassword = () => {
     setShowPass(!showpass);
   };
